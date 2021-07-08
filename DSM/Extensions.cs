@@ -14,17 +14,22 @@ namespace DSM
         /// <returns></returns>
         public static DateTime ToNextWeekDay(this DateTime dateTime)
         {
-
             do
             {
-                dateTime.AddDays(1);
+                dateTime = dateTime.AddDays(1);
             } 
-            while (!dateTime.IsWeekday());
+            while (!dateTime.IsWeekDay());
 
             return dateTime;
         }
 
-        public static bool IsWeekday(this DateTime dateTime)
+        /// <summary>
+        /// Checks if the day of the week is not
+        /// Saturday or Sunday
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static bool IsWeekDay(this DateTime dateTime)
         {
             return !(dateTime.DayOfWeek == DayOfWeek.Saturday || dateTime.DayOfWeek == DayOfWeek.Sunday);
         }

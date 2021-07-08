@@ -15,8 +15,6 @@ namespace DSM
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             this.Application.ItemSend += DeferSend_ItemSend;
-
-            Properties.Settings.Default.SettingChanging += Default_SettingChanging;
             
         }
 
@@ -26,16 +24,13 @@ namespace DSM
             //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
         }
 
-        private void Default_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
-        {
-            switch (e.SettingName)
-            {
-                case "EnableDSM":
-                    Globals.Ribbons.DSMRibbon.Enabled = (bool)e.NewValue;
-                    break;
-            }
-        }
-
+        /// <summary>
+        /// Event triggered when an email is being sent 
+        /// <br /><br />
+        /// If DSM is enabled, the email is defered to the configured time/date.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="cancel"></param>
         private void DeferSend_ItemSend(object item, ref bool cancel)
         {
             DateTime sendTime = GetSendTime();
@@ -50,13 +45,16 @@ namespace DSM
             }
         }
 
+        /// <summary>
+        /// Returns a DateTime following the configured Time/Day
+        /// </summary>
+        /// <returns></returns>
         public DateTime GetSendTime()
         {
             string time = Properties.Settings.Default.Time;
             Day day = (Day)Enum.Parse(typeof(Day), Properties.Settings.Default.Day);
 
             DateTime sendTime = DateTime.Now;
-            sendTime.
 
             switch (day)
             {
@@ -68,6 +66,8 @@ namespace DSM
                     sendTime = sendTime.ToNextWeekDay();
                     break;
             }
+
+            return sendTime;
         }
 
         public DateTime NextBusinessDay()
