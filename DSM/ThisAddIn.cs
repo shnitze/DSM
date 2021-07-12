@@ -33,14 +33,18 @@ namespace DSM
         /// <param name="cancel"></param>
         private void DeferSend_ItemSend(object item, ref bool cancel)
         {
-            DateTime sendTime = GetSendTime();
-            if (item is Outlook.MailItem mailItem)
+            if (Properties.Settings.Default.EnableDSM)
             {
+                DateTime sendTime = GetSendTime();
 
-                if (Properties.Settings.Default.EnableDSM)
+                if (item is Outlook.MailItem mailItem)
                 {
 
-                    mailItem.DeferredDeliveryTime = NextBusinessDay();
+                    if (Properties.Settings.Default.EnableDSM)
+                    {
+
+                        mailItem.DeferredDeliveryTime = NextBusinessDay();
+                    }
                 }
             }
         }
@@ -56,6 +60,8 @@ namespace DSM
 
             DateTime sendTime = DateTime.Now;
 
+            sendTime = sendTime.SetTime(time);
+
             switch (day)
             {
                 case Day.Day:
@@ -64,6 +70,16 @@ namespace DSM
                     break;
                 case Day.WeekDay:
                     sendTime = sendTime.ToNextWeekDay();
+                    break;
+
+                case Day.Monday:
+                case Day.Tuesday:
+                case Day.Wednesday:
+                case Day.Thursday:
+                case Day.Friday:
+                case Day.Saturday:
+                case Day.Sunday:
+                    sendTime.ToNextDayOfWeek(day);
                     break;
             }
 

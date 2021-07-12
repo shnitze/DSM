@@ -33,5 +33,23 @@ namespace DSM
         {
             return !(dateTime.DayOfWeek == DayOfWeek.Saturday || dateTime.DayOfWeek == DayOfWeek.Sunday);
         }
+
+        public static DateTime ToNextDayOfWeek(this DateTime dateTime, Day day)
+        {
+            DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), day.ToString());
+
+            int daysToAdd = ((int)dayOfWeek - (int)dateTime.DayOfWeek + 7) % 7;
+
+            return dateTime.AddDays(daysToAdd);
+        }
+
+        public static DateTime SetTime(this DateTime dateTime, string time)
+        {
+            DateTime temp = Convert.ToDateTime(time);
+
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, temp.Hour, temp.Minute, temp.Second);
+        }
+
+
     }
 }

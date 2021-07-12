@@ -32,5 +32,15 @@ namespace DSM.Test
 
             Assert.True(result);
         }
+
+        [Theory]
+        [InlineData("2021-07-08", "8:00 AM")]
+        public void SetTime_ReturnsDateTimeWithTime(DateTime dateTime, string time)
+        {
+            dateTime = dateTime.SetTime(time);
+
+            Assert.Equal("2021-07-08 8:00 AM", dateTime.ToString("yyyy-MM-dd h:mm tt"));
+
+        }
     }
 }
