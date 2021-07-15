@@ -34,6 +34,8 @@ namespace DSM
             this.label2 = new System.Windows.Forms.Label();
             this.cbxDay = new System.Windows.Forms.ComboBox();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -80,11 +82,34 @@ namespace DSM
             this.chkEnabled.Text = "Enable Delay Send Mode";
             this.chkEnabled.UseVisualStyleBackColor = true;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(378, 115);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(108, 28);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(264, 115);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(108, 28);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // DSMSettings
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 123);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(498, 155);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.chkEnabled);
             this.Controls.Add(this.cbxDay);
             this.Controls.Add(this.label2);
@@ -104,5 +129,7 @@ namespace DSM
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxDay;
         private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

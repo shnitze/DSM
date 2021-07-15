@@ -23,21 +23,15 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            Enabled = Properties.Settings.Default.EnableDSM;
-        }
 
-        //Don't think we'll really need this since we can just fetch the values in the .settings file...
-        //TODO: Remove?
-        public bool Enabled { get; set; }
+        }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
         {
             var frmSettings = new DSMSettings();
 
-            if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-
-            }
+            //Only need to show the dialog as it will deal with saving the values
+            frmSettings.Show();
         }
     }
 }

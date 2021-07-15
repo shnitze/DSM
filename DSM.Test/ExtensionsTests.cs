@@ -23,7 +23,7 @@ namespace DSM.Test
 
             Assert.False(result);
         }
-        
+
         [Theory]
         [InlineData("2021-07-08")]
         public void IsWeekDay_WithWeekDayDate_ReturnsTrue(DateTime dateTime)
@@ -34,13 +34,22 @@ namespace DSM.Test
         }
 
         [Theory]
-        [InlineData("2021-07-08", "8:00 AM")]
-        public void SetTime_ReturnsDateTimeWithTime(DateTime dateTime, string time)
+        [InlineData("2021-07-08", "8:00 AM", "2021-07-08 8:00 AM")]
+        public void SetTime_ReturnsDateTimeWithTime(DateTime dateTime, string time, DateTime expected)
         {
             dateTime = dateTime.SetTime(time);
 
-            Assert.Equal("2021-07-08 8:00 AM", dateTime.ToString("yyyy-MM-dd h:mm tt"));
+            Assert.Equal(expected, dateTime);
 
+        }
+
+        [Theory]
+        [InlineData("2021-07-08", Day.Monday, "2021-07-12")]
+        public void ToNextDayOfWeek_ReturnsDateTime(DateTime dateTime, Day dayOfWeek, DateTime expected)
+        {
+            dateTime = dateTime.ToNextDayOfWeek(dayOfWeek);
+
+            Assert.Equal(expected, dateTime);
         }
     }
 }
