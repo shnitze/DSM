@@ -11,6 +11,7 @@ namespace DSM
     public partial class ThisAddIn
     {
         private Outlook.Inspectors inspectors;
+        internal bool delaySingleEmail;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -19,7 +20,14 @@ namespace DSM
 
         private void Application_ItemSend(object Item, ref bool Cancel)
         {
-            throw new NotImplementedException();
+            //Here, we defer the send date 
+            if ((delaySingleEmail || Properties.Settings.Default.EnableDSM) && Item is Outlook.MailItem mailItem)
+            {
+                mailItem.DeferredDeliveryTime = Properties.Settings.Default.SendDateTime;
+            }
+
+            //reset the single email flag
+            delaySingleEmail = false;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
