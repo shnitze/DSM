@@ -5,11 +5,8 @@
     <Setting Name="EnableDSM" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Time" Type="System.String" Scope="User">
-      <Value Profile="(Default)">7:00 AM</Value>
-    </Setting>
-    <Setting Name="Day" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Weekday</Value>
+    <Setting Name="SendDateTime" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

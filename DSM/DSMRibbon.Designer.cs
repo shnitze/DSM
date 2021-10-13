@@ -37,6 +37,7 @@ namespace DSM
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.btnDSMSettings = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.grpProperties.SuspendLayout();
@@ -51,15 +52,23 @@ namespace DSM
             // 
             // grpProperties
             // 
+            this.grpProperties.Items.Add(this.button1);
             this.grpProperties.Items.Add(this.btnDSMSettings);
-            this.grpProperties.Label = "Delay Send Mode";
+            this.grpProperties.Label = "DSM";
             this.grpProperties.Name = "grpProperties";
-            this.grpProperties.Position = this.Factory.RibbonPosition.AfterOfficeId("DSMGroup");
+            this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
+            // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Label = "Configure DSM";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
             // 
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnDSMSettings.Label = "Configure Delay Send Mode";
+            this.btnDSMSettings.Label = "Send Later";
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;
             this.btnDSMSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDSMSettings_Click);
@@ -67,7 +76,7 @@ namespace DSM
             // DSMRibbon
             // 
             this.Name = "DSMRibbon";
-            this.RibbonType = "Microsoft.Outlook.Explorer";
+            this.RibbonType = "Microsoft.Outlook.Mail.Compose";
             this.Tabs.Add(this.tab1);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DSMRibbon_Load);
             this.tab1.ResumeLayout(false);
@@ -83,6 +92,7 @@ namespace DSM
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDSMSettings;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
     }
 
     partial class ThisRibbonCollection

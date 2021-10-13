@@ -37,25 +37,12 @@ namespace DSM.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7:00 AM")]
-        public string Time {
+        public global::System.DateTime SendDateTime {
             get {
-                return ((string)(this["Time"]));
+                return ((global::System.DateTime)(this["SendDateTime"]));
             }
             set {
-                this["Time"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Weekday")]
-        public string Day {
-            get {
-                return ((string)(this["Day"]));
-            }
-            set {
-                this["Day"] = value;
+                this["SendDateTime"] = value;
             }
         }
     }

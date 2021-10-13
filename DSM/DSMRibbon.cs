@@ -23,7 +23,11 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-
+            if (Properties.Settings.Default.EnableDSM)
+            {
+                var warning = new WarningTaskPane();
+                Globals.ThisAddIn.CustomTaskPanes.Add(warning, "Warning");
+            }
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)

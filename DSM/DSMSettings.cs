@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,12 +20,26 @@ namespace DSM
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //Save settings
             Properties.Settings.Default.EnableDSM = chkEnabled.Checked;
-            Properties.Settings.Default.Time = cbxTime.Text;
-            Properties.Settings.Default.Day = cbxDay.Text;
+            Properties.Settings.Default.SendDateTime = dateTimePicker1.Value;
+
+            DateTime sendTime = dateTimePicker1.Value;
+
+            //Get current MailItem
+            var inspector = Globals.ThisAddIn.Application.ActiveInspector();
+
+            var mailItem = (MailItem)inspector.CurrentItem;
+
+            mailItem.DeferredDeliveryTime = sendTime;
+
+            mailItem.Send();
 
             this.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

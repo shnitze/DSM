@@ -175,6 +175,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WarningTaskPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WarningTaskPane.Designer.cs">
+      <DependentUpon>WarningTaskPane.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DSMRibbon.resx">
       <DependentUpon>DSMRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +196,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WarningTaskPane.resx">
+      <DependentUpon>WarningTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DSM_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -201,6 +210,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Ribbon.cs">
+      <XmlRibbon>true</XmlRibbon>
+    </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -211,6 +223,9 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
