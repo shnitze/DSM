@@ -39,6 +39,7 @@ namespace DSM
 
             Properties.Settings.Default.EnableDSM = chkEnabled.Checked;
             Properties.Settings.Default.SendDateTime = sendTime;
+            Properties.Settings.Default.Save();
 
             //Get current MailItem
             var inspector = Globals.ThisAddIn.Application.ActiveInspector();
@@ -70,7 +71,10 @@ namespace DSM
         private void button1_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.EnableDSM = chkEnabled.Checked;
-            Properties.Settings.Default.SendDateTime = datePicker.Value;
+            Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            Properties.Settings.Default.Save();
+
+            this.Close();
         }
     }
 }

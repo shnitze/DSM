@@ -147,6 +147,7 @@ namespace DSM
             this.Controls.Add(this.chkEnabled);
             this.Name = "DSMSettings";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.DSMSettings_OnLoad);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
