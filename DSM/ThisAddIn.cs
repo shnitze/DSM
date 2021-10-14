@@ -15,7 +15,30 @@ namespace DSM
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            inspectors = this.Application.Inspectors;
             Application.ItemSend += Application_ItemSend;
+            inspectors.NewInspector += Inspectors_NewInspector;
+        }
+
+        /// <summary>
+        /// When a user Creates a new email, check if DSM is enabled.
+        /// If it is, show the warning
+        /// </summary>
+        /// <param name="Inspector"></param>
+        private void Inspectors_NewInspector(Outlook.Inspector Inspector)
+        {
+            if (Inspector.CurrentItem is Outlook.MailItem mailItem)
+            {
+                if (mailItem != null)
+                {
+                    if (Properties.Settings.Default.EnableDSM)
+                    {
+                        var warning = new WarningTaskPane();
+                        var taskPane = this.CustomTaskPanes.Add(warning, "Warning");
+                        taskPane.Visible = true;
+                    }
+                }
+            }
         }
 
         private void Application_ItemSend(object Item, ref bool Cancel)

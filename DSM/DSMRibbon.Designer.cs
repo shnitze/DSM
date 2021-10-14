@@ -37,7 +37,6 @@ namespace DSM
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.btnDSMSettings = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.grpProperties.SuspendLayout();
@@ -46,24 +45,17 @@ namespace DSM
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.tab1.ControlId.OfficeId = "TabNewMailMessage";
             this.tab1.Groups.Add(this.grpProperties);
-            this.tab1.Label = "TapDelaySend";
+            this.tab1.Label = "TabNewMailMessage";
             this.tab1.Name = "tab1";
             // 
             // grpProperties
             // 
-            this.grpProperties.Items.Add(this.button1);
             this.grpProperties.Items.Add(this.btnDSMSettings);
             this.grpProperties.Label = "DSM";
             this.grpProperties.Name = "grpProperties";
             this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
-            // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Label = "Configure DSM";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
             // 
             // btnDSMSettings
             // 
@@ -92,7 +84,6 @@ namespace DSM
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDSMSettings;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
     }
 
     partial class ThisRibbonCollection
