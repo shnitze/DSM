@@ -171,6 +171,12 @@
     <Compile Include="DSMSettings.Designer.cs">
       <DependentUpon>DSMSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="DSMToggleRibbon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DSMToggleRibbon.Designer.cs">
+      <DependentUpon>DSMToggleRibbon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DSMSettings.resx">
       <DependentUpon>DSMSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DSMToggleRibbon.resx">
+      <DependentUpon>DSMToggleRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
