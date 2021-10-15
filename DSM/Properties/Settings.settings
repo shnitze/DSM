@@ -8,5 +8,8 @@
     <Setting Name="SendDateTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ToggleSendDateTime" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -6,19 +6,6 @@ using System.Text;
 
 namespace DSM
 {
-    public enum Day
-    {
-        Day,
-        WeekDay,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
-    }
-
     public partial class DSMRibbon
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
@@ -32,7 +19,7 @@ namespace DSM
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
         {
-            var frmSettings = new DSMSettings();
+            var frmSettings = new DSMSettings(false);
 
             //Only need to show the dialog as it will deal with saving the values
             frmSettings.Show();

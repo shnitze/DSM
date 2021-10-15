@@ -45,5 +45,16 @@ namespace DSM.Properties {
                 this["SendDateTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime ToggleSendDateTime {
+            get {
+                return ((global::System.DateTime)(this["ToggleSendDateTime"]));
+            }
+            set {
+                this["ToggleSendDateTime"] = value;
+            }
+        }
     }
 }
