@@ -61,6 +61,7 @@ namespace DSM
             this.btnToggleDSM.Label = "Enable Delay Send Mode";
             this.btnToggleDSM.Name = "btnToggleDSM";
             this.btnToggleDSM.ShowImage = true;
+            this.btnToggleDSM.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnToggleDSM_Click);
             // 
             // DSMToggleRibbon
             // 

@@ -12,5 +12,39 @@ namespace DSM
         {
 
         }
+
+        /// <summary>
+        /// Toggle the Delay Send Mode for all emails...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnToggleDSM_Click(object sender, RibbonControlEventArgs e)
+        {
+            //Toggle is on, we need to disable it...
+            if (Properties.Settings.Default.EnableDSM)
+            {
+                Properties.Settings.Default.EnableDSM = false;
+                Properties.Settings.Default.Save();
+
+                btnToggleDSM.Label = "Enable Delay Send Mode";
+            }
+            else
+            {
+                //Open settings window to configure
+                var settings = new DSMSettings(true);
+
+                if (settings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Properties.Settings.Default.EnableDSM = true;
+                    Properties.Settings.Default.ToggleSendDateTime = settings.SendDateTime;
+                    Properties.Settings.Default.Save();
+
+                    //We should also update the UI so the user knows the addin is enabled...
+                    btnToggleDSM.Label = "Disable Delay Send Mode";
+
+                }
+            }
+
+        }
     }
 }

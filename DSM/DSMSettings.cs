@@ -13,15 +13,30 @@ namespace DSM
 {
     public partial class DSMSettings : Form
     {
-        public DSMSettings()
+        private bool _toggle;
+        /// <summary>
+        /// if toggle is true, we set the settings for the DSM toggle
+        /// </summary>
+        /// <param name="toggle"></param>
+        public DSMSettings(bool toggle)
         {
+            _toggle = toggle;
+
             InitializeComponent();
+
+            //When setting the DSM toggle date, we don't want the Send Later button
+            if (_toggle)
+            {
+                btnSave.Enabled = false;
+                btnSave.Visible = false;
+            }
         }
+
+        public DateTime SendDateTime => datePicker.Value.Date + timePicker.Value.TimeOfDay;
 
         private void DSMSettings_OnLoad(object sender, EventArgs e)
         {
             //Populate the fields on load
-            chkEnabled.Checked = Properties.Settings.Default.EnableDSM;
             datePicker.Value = Properties.Settings.Default.SendDateTime.Date;
             timePicker.Value = Properties.Settings.Default.SendDateTime;
         }
@@ -37,7 +52,6 @@ namespace DSM
             //combine both DateTimePicker values to get the Date and Time in a single variable...
             DateTime sendTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
 
-            Properties.Settings.Default.EnableDSM = chkEnabled.Checked;
             Properties.Settings.Default.SendDateTime = sendTime;
             Properties.Settings.Default.Save();
 
@@ -47,7 +61,7 @@ namespace DSM
             var mailItem = (MailItem)inspector.CurrentItem;
 
             //We don't need to defer the send time here, it'll be done in the Application.ItemSend 
-            if (!chkEnabled.Checked)
+            if (!_toggle)
             {
                 Globals.ThisAddIn.delaySingleEmail = true;
             }
@@ -68,9 +82,9 @@ namespace DSM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.EnableDSM = chkEnabled.Checked;
+            Properties.Settings.Default.EnableDSM = _toggle;
             Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
             Properties.Settings.Default.Save();
 
