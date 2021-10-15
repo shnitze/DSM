@@ -177,7 +177,6 @@
     <Compile Include="DSMToggleRibbon.Designer.cs">
       <DependentUpon>DSMToggleRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
