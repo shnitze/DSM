@@ -35,8 +35,9 @@ namespace DSM
             // 
             // btnDismiss
             // 
+            this.btnDismiss.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnDismiss.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDismiss.Location = new System.Drawing.Point(612, 9);
+            this.btnDismiss.Location = new System.Drawing.Point(611, 9);
             this.btnDismiss.Name = "btnDismiss";
             this.btnDismiss.Size = new System.Drawing.Size(89, 32);
             this.btnDismiss.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace DSM
             this.lblWarningMessage.AutoSize = true;
             this.lblWarningMessage.Location = new System.Drawing.Point(27, 17);
             this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(541, 21);
+            this.lblWarningMessage.Size = new System.Drawing.Size(433, 17);
             this.lblWarningMessage.TabIndex = 1;
             this.lblWarningMessage.Text = "Warning: Delay Send Mode is enabled. This email will be sent at {0}";
             // 
@@ -60,6 +61,7 @@ namespace DSM
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.lblWarningMessage);
             this.Controls.Add(this.btnDismiss);
+            this.MaximumSize = new System.Drawing.Size(10000, 49);
             this.Name = "WarningTaskPane";
             this.Size = new System.Drawing.Size(713, 49);
             this.ResumeLayout(false);

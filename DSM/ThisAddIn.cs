@@ -34,7 +34,8 @@ namespace DSM
                     if (Properties.Settings.Default.EnableDSM)
                     {
                         var warning = new WarningTaskPane();
-                        var taskPane = this.CustomTaskPanes.Add(warning, "Warning");
+                        //TODO: test that the taskpane appears in the Compose window.
+                        var taskPane = this.CustomTaskPanes.Add(warning, "Warning", Inspector);
                         taskPane.Visible = true;
                     }
                 }
@@ -44,9 +45,20 @@ namespace DSM
         private void Application_ItemSend(object Item, ref bool Cancel)
         {
             //Here, we defer the send date 
-            if ((delaySingleEmail || Properties.Settings.Default.EnableDSM) && Item is Outlook.MailItem mailItem)
+            if (Item is Outlook.MailItem mailItem)
             {
-                mailItem.DeferredDeliveryTime = Properties.Settings.Default.SendDateTime;
+                //Since we have different settings for the toggle button and the single email delay,
+                //we have to set the delay time appropriately.
+                //Because the single email delay can be set after the toggle is turned on, it should
+                //override the toggle send date time
+                if (delaySingleEmail)
+                {
+                    mailItem.DeferredDeliveryTime = Properties.Settings.Default.SendDateTime;
+                }
+                else if (Properties.Settings.Default.EnableDSM)
+                {
+                    mailItem.DeferredDeliveryTime = Properties.Settings.Default.ToggleSendDateTime;
+                }
             }
 
             //reset the single email flag
