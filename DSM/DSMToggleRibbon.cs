@@ -10,7 +10,10 @@ namespace DSM
     {
         private void DSMToggleRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-
+            if (Properties.Settings.Default.EnableDSM)
+            {
+                btnToggleDSM.Label = "Disable Delay Send Mode";
+            }
         }
 
         /// <summary>
