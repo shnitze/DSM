@@ -10,19 +10,22 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            if (Properties.Settings.Default.EnableDSM)
-            {
-                var warning = new WarningTaskPane();
-                Globals.ThisAddIn.CustomTaskPanes.Add(warning, "Warning");
-            }
+            //if (Properties.Settings.Default.EnableDSM)
+            //{
+            //    var warning = new WarningTaskPane();
+            //    Globals.ThisAddIn.CustomTaskPanes.Add(warning, "Warning");
+            //}
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
         {
             var frmSettings = new DSMSettings(false);
 
-            //Only need to show the dialog as it will deal with saving the values
-            frmSettings.Show();
+            //If the user enables single email DSM, we should update the warning message with the new send time...
+            if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Globals.ThisAddIn.warningUserControl.WarningMessage = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.SendDateTime}";
+            }
         }
     }
 }

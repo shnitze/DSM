@@ -73,7 +73,7 @@ namespace DSM
             // 
             // timePicker
             // 
-            this.timePicker.CustomFormat = "hh:mm";
+            this.timePicker.CustomFormat = "hh:mm tt";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePicker.Location = new System.Drawing.Point(284, 45);
             this.timePicker.Name = "timePicker";
@@ -110,7 +110,7 @@ namespace DSM
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Send Later";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSendLater_Click);
             // 
             // btnCancel
             // 
