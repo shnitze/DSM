@@ -110,7 +110,7 @@ namespace DSM
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Send Later";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSendLater_Click);
             // 
             // btnCancel
             // 

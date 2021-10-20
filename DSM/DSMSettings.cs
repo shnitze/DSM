@@ -41,8 +41,17 @@ namespace DSM
         private void DSMSettings_OnLoad(object sender, EventArgs e)
         {
             //Populate the fields on load
-            datePicker.Value = Properties.Settings.Default.SendDateTime.Date;
-            timePicker.Value = Properties.Settings.Default.SendDateTime;
+            if (_toggle)
+            {
+                datePicker.Value = Properties.Settings.Default.ToggleSendDateTime.Date;
+                timePicker.Value = Properties.Settings.Default.ToggleSendDateTime;
+            }
+            else
+            {
+                datePicker.Value = Properties.Settings.Default.SendDateTime.Date;
+                timePicker.Value = Properties.Settings.Default.SendDateTime;
+            }
+            
         }
 
         /// <summary>
@@ -51,7 +60,7 @@ namespace DSM
         /// <remarks>Note: This sends an email and triggers the Application.ItemSend event listener</remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSendLater_Click(object sender, EventArgs e)
         {
             //combine both DateTimePicker values to get the Date and Time in a single variable...
             DateTime sendTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
@@ -88,9 +97,17 @@ namespace DSM
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.EnableDSM = _toggle;
-            Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            if (_toggle)
+            {
+                Properties.Settings.Default.EnableDSM = true;
+                Properties.Settings.Default.ToggleSendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            }
+            else
+            {
+                Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            }
             Properties.Settings.Default.Save();
+
 
             //We should also update the warning message...
             if (Globals.ThisAddIn.warningUserControl != null)
