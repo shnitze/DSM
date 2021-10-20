@@ -15,6 +15,7 @@ namespace DSM
         private Outlook.Inspectors inspectors;
         internal bool delaySingleEmail;
         internal CustomTaskPane warningTaskPane;
+        internal WarningTaskPane warningUserControl;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -42,6 +43,7 @@ namespace DSM
                         taskPane.Height = 80;
                         taskPane.Visible = true;
                         warningTaskPane = taskPane;
+                        warningUserControl = warning;
                     }
                 }
             }

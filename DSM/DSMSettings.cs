@@ -30,6 +30,10 @@ namespace DSM
                 btnSave.Enabled = false;
                 btnSave.Visible = false;
             }
+            else
+            {
+                lblNote.Visible = false;
+            }
         }
 
         public DateTime SendDateTime => datePicker.Value.Date + timePicker.Value.TimeOfDay;
@@ -87,6 +91,12 @@ namespace DSM
             Properties.Settings.Default.EnableDSM = _toggle;
             Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
             Properties.Settings.Default.Save();
+
+            //We should also update the warning message...
+            if (Globals.ThisAddIn.warningUserControl != null)
+            {
+                Globals.ThisAddIn.warningUserControl.UpdateDateTime(Properties.Settings.Default.SendDateTime);
+            }
 
             this.Close();
         }

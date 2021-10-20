@@ -73,7 +73,7 @@ namespace DSM
             // 
             // timePicker
             // 
-            this.timePicker.CustomFormat = "hh:mm";
+            this.timePicker.CustomFormat = "hh:mm tt";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePicker.Location = new System.Drawing.Point(284, 45);
             this.timePicker.Name = "timePicker";

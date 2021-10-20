@@ -12,12 +12,31 @@ namespace DSM
 {
     public partial class WarningTaskPane : UserControl
     {
+        public string WarningMessage { 
+            get
+            {
+                return lblWarningMessage.Text;
+            }
+            set
+            {
+                lblWarningMessage.Text = value;
+            }
+        }
+
         public WarningTaskPane()
         {
             //TODO: Get string from resources...
             //TODO: 
             InitializeComponent();
             this.SizeChanged += WarningTaskPane_SizeChanged;
+            //On load the message should display the Toggle send DateTime
+            lblWarningMessage.Text = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.ToggleSendDateTime}";
+        }
+
+        public void UpdateDateTime(DateTime dateTime)
+        {
+            WarningMessage = $"Delay Send Mode is enabled. This email will be sent at {dateTime}";
+            Update();
         }
 
         private void WarningTaskPane_SizeChanged(object sender, EventArgs e)
