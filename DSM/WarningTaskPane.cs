@@ -41,14 +41,22 @@ namespace DSM
 
         private void WarningTaskPane_SizeChanged(object sender, EventArgs e)
         {
-            //we're really only concerned with the height...
-            if (Globals.ThisAddIn.warningTaskPane.DockPosition == Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop 
-                && Globals.ThisAddIn.warningTaskPane.Height != 80)
+            //This can cause an exception when the component is initialized
+            //For now, absorb the exception
+            try
             {
-                //if the user is dragging the taskPane, cancel it...
-                SendKeys.Send("{ESC}");
-                //Set it's height back to original
-                Globals.ThisAddIn.warningTaskPane.Height = 80;
+                //we're really only concerned with the height...
+                if (Globals.ThisAddIn.warningTaskPane.DockPosition == Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop
+                    && Globals.ThisAddIn.warningTaskPane.Height != 80)
+                {
+                    //if the user is dragging the taskPane, cancel it...
+                    SendKeys.Send("{ESC}");
+                    //Set it's height back to original
+                    Globals.ThisAddIn.warningTaskPane.Height = 80;
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
