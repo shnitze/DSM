@@ -60,6 +60,7 @@ namespace DSM
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnDSMSettings.Image = global::DSM.Properties.Resources.delaySendIcon;
             this.btnDSMSettings.Label = "Send Later";
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;

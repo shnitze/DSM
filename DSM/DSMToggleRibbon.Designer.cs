@@ -59,6 +59,7 @@ namespace DSM
             // btnToggleDSM
             // 
             this.btnToggleDSM.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnToggleDSM.Image = global::DSM.Properties.Resources.delaySendIcon;
             this.btnToggleDSM.Label = "Enable Delay Send Mode";
             this.btnToggleDSM.Name = "btnToggleDSM";
             this.btnToggleDSM.ShowImage = true;
