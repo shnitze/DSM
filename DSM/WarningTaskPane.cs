@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace DSM
 {
-    public partial class WarningTaskPane : UserControl
+    public partial class WarningUserControl : UserControl
     {
-        public string WarningMessage { 
+        public string WarningMessage 
+        { 
             get
             {
                 return lblWarningMessage.Text;
@@ -23,12 +24,11 @@ namespace DSM
             }
         }
 
-        public WarningTaskPane()
+        public WarningUserControl()
         {
             //TODO: Get string from resources...
             //TODO: 
             InitializeComponent();
-            this.SizeChanged += WarningTaskPane_SizeChanged;
             //On load the message should display the Toggle send DateTime
             lblWarningMessage.Text = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.ToggleSendDateTime}";
         }
@@ -41,23 +41,6 @@ namespace DSM
 
         private void WarningTaskPane_SizeChanged(object sender, EventArgs e)
         {
-            //This can cause an exception when the component is initialized
-            //For now, absorb the exception
-            try
-            {
-                //we're really only concerned with the height...
-                if (Globals.ThisAddIn.warningTaskPane.DockPosition == Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop
-                    && Globals.ThisAddIn.warningTaskPane.Height != 80)
-                {
-                    //if the user is dragging the taskPane, cancel it...
-                    SendKeys.Send("{ESC}");
-                    //Set it's height back to original
-                    Globals.ThisAddIn.warningTaskPane.Height = 80;
-                }
-            }
-            catch (Exception)
-            {
-            }
         }
 
         private void btnDismiss_Click(object sender, EventArgs e)

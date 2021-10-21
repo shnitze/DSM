@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace DSM
 {
@@ -24,7 +25,10 @@ namespace DSM
             //If the user enables single email DSM, we should update the warning message with the new send time...
             if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Globals.ThisAddIn.warningUserControl.WarningMessage = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.SendDateTime}";
+                Outlook.Inspector inspector = (Outlook.Inspector)e.Control.Context;
+                InspectorWrapper inspectorWrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+                WarningUserControl userControl = (WarningUserControl)inspectorWrapper.CustomTaskPane.Control;
+                userControl.UpdateDateTime(Properties.Settings.Default.SendDateTime);
             }
         }
     }
