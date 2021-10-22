@@ -5,9 +5,6 @@
     <Setting Name="EnableDSM" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SendDateTime" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="ToggleSendDateTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
