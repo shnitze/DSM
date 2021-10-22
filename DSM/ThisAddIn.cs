@@ -78,7 +78,12 @@ namespace DSM
         public DateTime SendDateTime
         {
             get => sendDateTime;
-            set => sendDateTime = value;
+            set
+            {
+                //If we get a new value update the taskPane at the same time...
+                sendDateTime = value;
+                ((WarningUserControl)taskPane.Control).UpdateDateTime(sendDateTime);
+            }
         }
 
     }
