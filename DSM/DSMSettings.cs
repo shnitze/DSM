@@ -108,13 +108,6 @@ namespace DSM
             }
             Properties.Settings.Default.Save();
 
-
-            //We should also update the warning message...
-            if (Globals.ThisAddIn.warningUserControl != null)
-            {
-                Globals.ThisAddIn.warningUserControl.UpdateDateTime(Properties.Settings.Default.SendDateTime);
-            }
-
             this.Close();
         }
     }

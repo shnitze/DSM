@@ -1,7 +1,7 @@
 ﻿
 namespace DSM
 {
-    partial class WarningTaskPane
+    partial class WarningUserControl
     {
         /// <summary> 
         /// Required designer variable.

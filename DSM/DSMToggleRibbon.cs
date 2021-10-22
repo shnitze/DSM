@@ -13,6 +13,12 @@ namespace DSM
             if (Properties.Settings.Default.EnableDSM)
             {
                 btnToggleDSM.Label = "Disable Delay Send Mode";
+                btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
+            }
+            else
+            {
+                btnToggleDSM.Label = "Enable Delay Send Mode";
+                btnToggleDSM.Image = Properties.Resources.delaySendIcon;
             }
         }
 
@@ -30,6 +36,7 @@ namespace DSM
                 Properties.Settings.Default.Save();
 
                 btnToggleDSM.Label = "Enable Delay Send Mode";
+                btnToggleDSM.Image = Properties.Resources.delaySendIcon;
             }
             else
             {
@@ -44,7 +51,7 @@ namespace DSM
 
                     //We should also update the UI so the user knows the addin is enabled...
                     btnToggleDSM.Label = "Disable Delay Send Mode";
-
+                    btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
                 }
             }
 

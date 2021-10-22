@@ -10,18 +10,85 @@ using Microsoft.Office.Tools;
 
 namespace DSM
 {
+    public class InspectorWrapper
+    {
+        private Outlook.Inspector inspector;
+        private CustomTaskPane taskPane;
+
+        public InspectorWrapper(Outlook.Inspector inspector)
+        {
+            this.inspector = inspector;
+            ((Outlook.InspectorEvents_Event)this.inspector).Close += new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
+
+            var userControl = new WarningUserControl();
+            userControl.SizeChanged += UserControl_SizeChanged;
+
+            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), "Warning", inspector);
+            taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
+            taskPane.Height = 80;
+            taskPane.Visible = true;
+        }
+
+        private void UserControl_SizeChanged(object sender, EventArgs e)
+        {
+            //This can cause an exception when the component is initialized
+            //For now, absorb the exception
+            try
+            {
+                //we're really only concerned with the height...
+                if (taskPane.DockPosition == Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop
+                    && taskPane.Height != 80)
+                {
+                    //if the user is dragging the taskPane, cancel it...
+                    SendKeys.Send("{ESC}");
+                    //Set it's height back to original
+                    taskPane.Height = 80;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void TaskPane_VisibleChanged(object sender, EventArgs e)
+        {
+            //this may not be needed
+        }
+
+        private void InspectorWrapper_Close()
+        {
+            if (taskPane != null)
+            {
+                Globals.ThisAddIn.CustomTaskPanes.Remove(taskPane);
+            }
+
+            taskPane = null;
+            Globals.ThisAddIn.InspectorWrappers.Remove(inspector);
+            ((Outlook.InspectorEvents_Event)this.inspector).Close -= new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
+        }
+
+        public CustomTaskPane CustomTaskPane => taskPane;
+    }
+
     public partial class ThisAddIn
     {
+        private Dictionary<Outlook.Inspector, InspectorWrapper> inspectorWrappersValue = new Dictionary<Outlook.Inspector, InspectorWrapper>();
+
         private Outlook.Inspectors inspectors;
         internal bool delaySingleEmail;
-        internal CustomTaskPane warningTaskPane;
-        internal WarningTaskPane warningUserControl;
+        //internal CustomTaskPane warningTaskPane;
+        //internal WarningTaskPane warningUserControl;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             inspectors = this.Application.Inspectors;
             Application.ItemSend += Application_ItemSend;
             inspectors.NewInspector += Inspectors_NewInspector;
+
+            foreach (Outlook.Inspector inspector in inspectors)
+            {
+                Inspectors_NewInspector(inspector);
+            }
         }
 
         /// <summary>
@@ -31,23 +98,13 @@ namespace DSM
         /// <param name="Inspector"></param>
         private void Inspectors_NewInspector(Outlook.Inspector Inspector)
         {
-            if (Inspector.CurrentItem is Outlook.MailItem mailItem)
+            if (Inspector.CurrentItem is Outlook.MailItem)
             {
-                if (mailItem != null)
-                {
-                    if (Properties.Settings.Default.EnableDSM)
-                    {
-                        var warning = new WarningTaskPane();
-                        var taskPane = this.CustomTaskPanes.Add(warning, "Warning", Inspector);
-                        taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
-                        taskPane.Height = 80;
-                        taskPane.Visible = true;
-                        warningTaskPane = taskPane;
-                        warningUserControl = warning;
-                    }
-                }
+                inspectorWrappersValue.Add(Inspector, new InspectorWrapper(Inspector));
             }
         }
+
+        public Dictionary<Outlook.Inspector, InspectorWrapper> InspectorWrappers => inspectorWrappersValue;
 
         private void Application_ItemSend(object Item, ref bool Cancel)
         {
@@ -88,6 +145,9 @@ namespace DSM
         {
             // Note: Outlook no longer raises this event. If you have code that 
             //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
+            inspectors.NewInspector -= new Outlook.InspectorsEvents_NewInspectorEventHandler(Inspectors_NewInspector);
+            inspectors = null;
+            inspectorWrappersValue = null;
         }
 
         #region VSTO generated code
