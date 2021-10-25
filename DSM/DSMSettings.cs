@@ -48,8 +48,18 @@ namespace DSM
             }
             else
             {
-                datePicker.Value = Properties.Settings.Default.SendDateTime.Date;
-                timePicker.Value = Properties.Settings.Default.SendDateTime;
+                var inspector = Globals.ThisAddIn.Application.ActiveInspector();
+                
+                if (Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime != DateTime.MinValue)
+                {
+                    datePicker.Value = Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime.Date;
+                    timePicker.Value = Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime;
+                }
+                else
+                {
+                    datePicker.Value = DateTime.Now.Date;
+                    timePicker.Value = DateTime.Now;
+                }
             }
             
         }
@@ -65,29 +75,22 @@ namespace DSM
             //combine both DateTimePicker values to get the Date and Time in a single variable...
             DateTime sendTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
 
-            Properties.Settings.Default.SendDateTime = sendTime;
-            Properties.Settings.Default.Save();
-
             //Get current MailItem
             var inspector = Globals.ThisAddIn.Application.ActiveInspector();
 
             var mailItem = (MailItem)inspector.CurrentItem;
 
-            //We don't need to defer the send time here, it'll be done in the Application.ItemSend 
+            //We don't need to defer the send time here, it'll be done in the Application.ItemSend event
             if (!_toggle)
             {
-                Globals.ThisAddIn.delaySingleEmail = true;
+                Globals.ThisAddIn.InspectorWrappers[inspector].DelaySingleEmail = true;
+                Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime = sendTime;
             }
 
             //Note: Errors might be thrown here if the email is invalid (ie. no recipient)
             mailItem.Send();
 
             this.Close();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -101,13 +104,23 @@ namespace DSM
             {
                 Properties.Settings.Default.EnableDSM = true;
                 Properties.Settings.Default.ToggleSendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+                Properties.Settings.Default.Save();
             }
             else
             {
-                Properties.Settings.Default.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
-            }
-            Properties.Settings.Default.Save();
+                //We're deferring a single email, set the send time in the InspectorWrapper
+                //Get current MailItem
+                var inspector = Globals.ThisAddIn.Application.ActiveInspector();
 
+                Globals.ThisAddIn.InspectorWrappers[inspector].DelaySingleEmail = true;
+                Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            }
+
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

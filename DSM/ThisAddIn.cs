@@ -14,6 +14,8 @@ namespace DSM
     {
         private Outlook.Inspector inspector;
         private CustomTaskPane taskPane;
+        private bool delaySingleEmail;
+        private DateTime sendDateTime;
 
         public InspectorWrapper(Outlook.Inspector inspector)
         {
@@ -36,7 +38,7 @@ namespace DSM
             try
             {
                 //we're really only concerned with the height...
-                if (taskPane.DockPosition == Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionTop
+                if (taskPane.DockPosition == Office.MsoCTPDockPosition.msoCTPDockPositionTop
                     && taskPane.Height != 80)
                 {
                     //if the user is dragging the taskPane, cancel it...
@@ -68,6 +70,22 @@ namespace DSM
         }
 
         public CustomTaskPane CustomTaskPane => taskPane;
+        public bool DelaySingleEmail
+        {
+            get => delaySingleEmail;
+            set => delaySingleEmail = value;
+        }
+        public DateTime SendDateTime
+        {
+            get => sendDateTime;
+            set
+            {
+                //If we get a new value update the taskPane at the same time...
+                sendDateTime = value;
+                ((WarningUserControl)taskPane.Control).UpdateDateTime(sendDateTime);
+            }
+        }
+
     }
 
     public partial class ThisAddIn
@@ -75,7 +93,7 @@ namespace DSM
         private Dictionary<Outlook.Inspector, InspectorWrapper> inspectorWrappersValue = new Dictionary<Outlook.Inspector, InspectorWrapper>();
 
         private Outlook.Inspectors inspectors;
-        internal bool delaySingleEmail;
+        //internal bool delaySingleEmail;
         //internal CustomTaskPane warningTaskPane;
         //internal WarningTaskPane warningUserControl;
 
@@ -112,17 +130,27 @@ namespace DSM
             if (Item is Outlook.MailItem mailItem)
             {
                 DateTime sendDateTime = DateTime.MinValue;
+
                 //Since we have different settings for the toggle button and the single email delay,
                 //we have to set the delay time appropriately.
                 //Because the single email delay can be set after the toggle is turned on, it should
                 //override the toggle send date time
-                if (delaySingleEmail)
-                {
-                    sendDateTime = Properties.Settings.Default.SendDateTime;
-                }
-                else if (Properties.Settings.Default.EnableDSM)
+
+                
+
+                if (Properties.Settings.Default.EnableDSM)
                 {
                     sendDateTime = Properties.Settings.Default.ToggleSendDateTime;
+                }
+
+                //Look in the InspectorWrapper to see if we have a single email DSM or disable[TODO]
+                var inspectorWrapper = InspectorWrappers[mailItem.GetInspector];
+                if (inspectorWrapper != null)
+                {
+                    if (inspectorWrapper.DelaySingleEmail)
+                    {
+                        sendDateTime = inspectorWrapper.SendDateTime;
+                    }
                 }
 
                 if (sendDateTime != DateTime.MinValue)
@@ -130,8 +158,6 @@ namespace DSM
                     if (MessageBox.Show($"This email will be sent at {sendDateTime} and will be moved to the Outbox folder until sending. Do you want to continue?", "Delay Send Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         mailItem.DeferredDeliveryTime = sendDateTime;
-                        //reset the flag
-                        delaySingleEmail = false;
                     }
                     else
                     {
