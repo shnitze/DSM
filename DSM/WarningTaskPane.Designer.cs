@@ -37,19 +37,20 @@ namespace DSM
             this.lblWarningMessage.AutoSize = true;
             this.lblWarningMessage.Location = new System.Drawing.Point(27, 17);
             this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(433, 17);
+            this.lblWarningMessage.Size = new System.Drawing.Size(1105, 21);
             this.lblWarningMessage.TabIndex = 1;
-            this.lblWarningMessage.Text = "Warning: Delay Send Mode is enabled. This email will be sent at {0}";
+            this.lblWarningMessage.Text = "Delay Send Mode is enabled. This email will be sent at {dateTime}. Outlook must b" +
+    "e open and connected to the VPN at the time of sending.";
             // 
-            // WarningTaskPane
+            // WarningUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.lblWarningMessage);
             this.MaximumSize = new System.Drawing.Size(10000, 49);
-            this.Name = "WarningTaskPane";
-            this.Size = new System.Drawing.Size(597, 49);
+            this.Name = "WarningUserControl";
+            this.Size = new System.Drawing.Size(929, 49);
             this.ResumeLayout(false);
             this.PerformLayout();
 
