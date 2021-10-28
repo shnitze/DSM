@@ -23,12 +23,18 @@ namespace DSM
             ((Outlook.InspectorEvents_Event)this.inspector).Close += new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
 
             var userControl = new WarningUserControl();
-            userControl.SizeChanged += UserControl_SizeChanged;
+            userControl.ClientSizeChanged += UserControl_SizeChanged;
 
             taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), "Warning", inspector);
             taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
             taskPane.Height = 80;
-            taskPane.Visible = true;
+
+            //We should only make it visible if DSM is enabled...
+            //only check for the toggle since the single email isn't initialized yet...
+            if (Properties.Settings.Default.EnableDSM)
+            {
+                taskPane.Visible = true;
+            }
         }
 
         private void UserControl_SizeChanged(object sender, EventArgs e)
@@ -73,7 +79,14 @@ namespace DSM
         public bool DelaySingleEmail
         {
             get => delaySingleEmail;
-            set => delaySingleEmail = value;
+            set
+            {
+                delaySingleEmail = value;
+                if (!taskPane.Visible)
+                {
+                    taskPane.Visible = true;
+                }
+            }
         }
         public DateTime SendDateTime
         {

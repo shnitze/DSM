@@ -268,10 +268,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DSM_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DSM_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7A9ABD541B94A226C1F97200619FDCD75640631D</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A01B0A9AD7565DC9E0C383E67739160DD7B06F9D</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,12 +30,12 @@ namespace DSM
             //TODO: 
             InitializeComponent();
             //On load the message should display the Toggle send DateTime
-            lblWarningMessage.Text = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.ToggleSendDateTime}";
+            lblWarningMessage.Text = $"Delay Send Mode is enabled. This email will be sent at {Properties.Settings.Default.ToggleSendDateTime}. Outlook must be open and connected to the VPN at the time of sending.";
         }
 
         public void UpdateDateTime(DateTime dateTime)
         {
-            WarningMessage = $"Delay Send Mode is enabled. This email will be sent at {dateTime}";
+            WarningMessage = $"Delay Send Mode is enabled. This email will be sent at {dateTime}. Outlook must be open and connected to the VPN at the time of sending.";
             Update();
         }
 
