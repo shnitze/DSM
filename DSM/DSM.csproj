@@ -209,8 +209,14 @@
     <Compile Include="WarningTaskPane.Designer.cs">
       <DependentUpon>WarningTaskPane.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DSMRibbon.fr.resx">
+      <DependentUpon>DSMRibbon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DSMRibbon.resx">
       <DependentUpon>DSMRibbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DSMSettings.fr.resx">
+      <DependentUpon>DSMSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DSMSettings.resx">
       <DependentUpon>DSMSettings.cs</DependentUpon>
@@ -228,6 +234,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WarningTaskPane.fr.resx">
+      <DependentUpon>WarningTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WarningTaskPane.resx">
       <DependentUpon>WarningTaskPane.cs</DependentUpon>
     </EmbeddedResource>

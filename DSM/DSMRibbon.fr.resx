@@ -117,20 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="delaySendIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delaySendIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="disableDSM" xml:space="preserve">
-    <value>Disable Delay Send Mode</value>
-  </data>
-  <data name="disableDSMIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disableDSMIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="enableDSM" xml:space="preserve">
-    <value>Enable Delay Send Mode</value>
-  </data>
-  <data name="warning" xml:space="preserve">
-    <value>Warning</value>
+  <data name="btnDSMSettings.Label" xml:space="preserve">
+    <value>Délai d'envoi</value>
   </data>
 </root>

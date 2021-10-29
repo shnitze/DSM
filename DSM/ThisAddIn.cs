@@ -25,7 +25,7 @@ namespace DSM
             var userControl = new WarningUserControl();
             userControl.ClientSizeChanged += UserControl_SizeChanged;
 
-            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), "Warning", inspector);
+            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), Properties.Resources.warning, inspector);
             taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
             taskPane.Height = 80;
 

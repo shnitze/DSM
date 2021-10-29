@@ -12,12 +12,12 @@ namespace DSM
         {
             if (Properties.Settings.Default.EnableDSM)
             {
-                btnToggleDSM.Label = "Disable Delay Send Mode";
+                btnToggleDSM.Label = Properties.Resources.disableDSM;
                 btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
             }
             else
             {
-                btnToggleDSM.Label = "Enable Delay Send Mode";
+                btnToggleDSM.Label = Properties.Resources.enableDSM;
                 btnToggleDSM.Image = Properties.Resources.delaySendIcon;
             }
         }

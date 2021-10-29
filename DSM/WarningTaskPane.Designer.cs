@@ -29,28 +29,22 @@ namespace DSM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarningUserControl));
             this.lblWarningMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblWarningMessage
             // 
-            this.lblWarningMessage.AutoSize = true;
-            this.lblWarningMessage.Location = new System.Drawing.Point(27, 17);
+            resources.ApplyResources(this.lblWarningMessage, "lblWarningMessage");
             this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(1105, 21);
-            this.lblWarningMessage.TabIndex = 1;
-            this.lblWarningMessage.Text = "Delay Send Mode is enabled. This email will be sent at {dateTime}. Outlook must b" +
-    "e open and connected to the VPN at the time of sending.";
             // 
             // WarningUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.lblWarningMessage);
-            this.MaximumSize = new System.Drawing.Size(10000, 49);
             this.Name = "WarningUserControl";
-            this.Size = new System.Drawing.Size(929, 49);
             this.ResumeLayout(false);
             this.PerformLayout();
 

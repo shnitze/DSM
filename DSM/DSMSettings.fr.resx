@@ -117,20 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="delaySendIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delaySendIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 43</value>
   </data>
-  <data name="disableDSM" xml:space="preserve">
-    <value>Disable Delay Send Mode</value>
+  <data name="lblNote.Text" xml:space="preserve">
+    <value>Notez bien: Lorsqu'il est activé, chaque e-mail sera reporté à l'heure spécifiée.
+</value>
   </data>
-  <data name="disableDSMIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disableDSMIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 45</value>
   </data>
-  <data name="enableDSM" xml:space="preserve">
-    <value>Enable Delay Send Mode</value>
+  <data name="lblSendAt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 17</value>
   </data>
-  <data name="warning" xml:space="preserve">
-    <value>Warning</value>
+  <data name="lblSendAt.Text" xml:space="preserve">
+    <value>Envoyer à</value>
+  </data>
+  <data name="timePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 44</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Date d'envoi</value>
+  </data>
+  <data name="datePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 44</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 188</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 28</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Envoyer plus tard</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
   </data>
 </root>

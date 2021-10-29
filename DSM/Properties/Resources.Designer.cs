@@ -71,12 +71,39 @@ namespace DSM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable Delay Send Mode.
+        /// </summary>
+        internal static string disableDSM {
+            get {
+                return ResourceManager.GetString("disableDSM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap disableDSMIcon {
             get {
                 object obj = ResourceManager.GetObject("disableDSMIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Delay Send Mode.
+        /// </summary>
+        internal static string enableDSM {
+            get {
+                return ResourceManager.GetString("enableDSM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string warning {
+            get {
+                return ResourceManager.GetString("warning", resourceCulture);
             }
         }
     }
