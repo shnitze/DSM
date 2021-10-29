@@ -168,7 +168,7 @@ namespace DSM
 
                 if (sendDateTime != DateTime.MinValue)
                 {
-                    if (MessageBox.Show($"This email will be sent at {sendDateTime} and will be moved to the Outbox folder until sending. Do you want to continue?", "Delay Send Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime), Properties.Resources.warning, MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         mailItem.DeferredDeliveryTime = sendDateTime;
                     }

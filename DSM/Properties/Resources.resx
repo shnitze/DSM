@@ -130,6 +130,9 @@
   <data name="enableDSM" xml:space="preserve">
     <value>Enable Delay Send Mode</value>
   </data>
+  <data name="sendDialog" xml:space="preserve">
+    <value>This email will be sent at {0} and will be moved to the Outbox folder until sending. Do you want to continue?</value>
+  </data>
   <data name="warning" xml:space="preserve">
     <value>Warning</value>
   </data>
