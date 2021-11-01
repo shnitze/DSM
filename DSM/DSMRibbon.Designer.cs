@@ -35,6 +35,7 @@ namespace DSM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DSMRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
             this.btnDSMSettings = this.Factory.CreateRibbonButton();
@@ -47,21 +48,21 @@ namespace DSM
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.ControlId.OfficeId = "TabNewMailMessage";
             this.tab1.Groups.Add(this.grpProperties);
-            this.tab1.Label = "TabNewMailMessage";
+            resources.ApplyResources(this.tab1, "tab1");
             this.tab1.Name = "tab1";
             // 
             // grpProperties
             // 
             this.grpProperties.Items.Add(this.btnDSMSettings);
-            this.grpProperties.Label = "DSM";
+            resources.ApplyResources(this.grpProperties, "grpProperties");
             this.grpProperties.Name = "grpProperties";
             this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
             // 
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            resources.ApplyResources(this.btnDSMSettings, "btnDSMSettings");
             this.btnDSMSettings.Image = global::DSM.Properties.Resources.delaySendIcon;
-            this.btnDSMSettings.Label = "Send Later";
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;
             this.btnDSMSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDSMSettings_Click);
@@ -71,6 +72,7 @@ namespace DSM
             this.Name = "DSMRibbon";
             this.RibbonType = "Microsoft.Outlook.Mail.Compose";
             this.Tabs.Add(this.tab1);
+            resources.ApplyResources(this, "$this");
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DSMRibbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();

@@ -118,53 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>929, 49</value>
+  <data name="lblNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 43</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblNote.Text" xml:space="preserve">
+    <value>Notez bien: Lorsqu'il est activé, chaque e-mail sera reporté à l'heure spécifiée.
+</value>
   </data>
-  <data name="lblWarningMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>884, 17</value>
+  <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 45</value>
   </data>
-  <data name="lblWarningMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 17</value>
+  <data name="lblSendAt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 17</value>
   </data>
-  <data name="lblWarningMessage.Text" xml:space="preserve">
-    <value>Delay Send Mode is enabled. This email will be sent at {dateTime}. Outlook must be open and connected to the VPN at the time of sending.</value>
+  <data name="lblSendAt.Text" xml:space="preserve">
+    <value>Envoyer à</value>
   </data>
-  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>10000, 49</value>
+  <data name="timePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 44</value>
   </data>
-  <data name="&gt;&gt;lblWarningMessage.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Date d'envoi</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblWarningMessage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="datePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 44</value>
   </data>
-  <data name="&gt;&gt;lblWarningMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 188</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>WarningUserControl</value>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 28</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Envoyer plus tard</value>
   </data>
-  <data name="&gt;&gt;lblWarningMessage.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
   </data>
-  <data name="&gt;&gt;lblWarningMessage.Name" xml:space="preserve">
-    <value>lblWarningMessage</value>
-  </data>
-  <data name="lblWarningMessage.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>fr</value>
-  </metadata>
 </root>

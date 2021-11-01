@@ -121,7 +121,19 @@
   <data name="delaySendIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delaySendIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="disableDSM" xml:space="preserve">
+    <value>Disable Delay Send Mode</value>
+  </data>
   <data name="disableDSMIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\disableDSMIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enableDSM" xml:space="preserve">
+    <value>Enable Delay Send Mode</value>
+  </data>
+  <data name="sendDialog" xml:space="preserve">
+    <value>This email will be sent at {0} and will be moved to the Outbox folder until sending. Do you want to continue?</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
 </root>
