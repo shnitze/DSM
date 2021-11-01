@@ -117,67 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="tglDisable.Label" xml:space="preserve">
+    <value>Disable DSM</value>
   </data>
-  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.OfficeMenuView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="&gt;&gt;tglDisable.Name" xml:space="preserve">
+    <value>tglDisable</value>
   </data>
-  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Name" xml:space="preserve">
-    <value>DSMRibbon.OfficeMenu</value>
+  <data name="&gt;&gt;tglDisable.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ToggleButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="&gt;&gt;btnDSMSettings.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tglDisable.Parent" xml:space="preserve">
     <value>grpProperties</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GenericRibbonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="&gt;&gt;tglDisable.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnDSMSettings.Label" xml:space="preserve">
     <value>Send Later</value>
   </data>
-  <data name="&gt;&gt;DSMRibbon.OfficeMenu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="grpProperties.Label" xml:space="preserve">
-    <value>DSM</value>
-  </data>
-  <data name="&gt;&gt;tab1.Name" xml:space="preserve">
-    <value>tab1</value>
-  </data>
-  <data name="tab1.Label" xml:space="preserve">
-    <value>TabNewMailMessage</value>
+  <data name="&gt;&gt;btnDSMSettings.Name" xml:space="preserve">
+    <value>btnDSMSettings</value>
   </data>
   <data name="&gt;&gt;btnDSMSettings.Type" xml:space="preserve">
     <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="&gt;&gt;btnDSMSettings.Parent" xml:space="preserve">
+    <value>grpProperties</value>
+  </data>
+  <data name="&gt;&gt;btnDSMSettings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpProperties.Label" xml:space="preserve">
+    <value>DSM</value>
+  </data>
+  <data name="&gt;&gt;grpProperties.Name" xml:space="preserve">
+    <value>grpProperties</value>
+  </data>
+  <data name="&gt;&gt;grpProperties.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="&gt;&gt;grpProperties.Parent" xml:space="preserve">
+    <value>tab1</value>
+  </data>
+  <data name="&gt;&gt;grpProperties.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tab1.Label" xml:space="preserve">
+    <value>TabNewMailMessage</value>
+  </data>
+  <data name="&gt;&gt;tab1.Name" xml:space="preserve">
     <value>tab1</value>
   </data>
   <data name="&gt;&gt;tab1.Type" xml:space="preserve">
     <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.TabView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DSMRibbon</value>
-  </data>
-  <data name="&gt;&gt;grpProperties.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;btnDSMSettings.Name" xml:space="preserve">
-    <value>btnDSMSettings</value>
-  </data>
-  <data name="&gt;&gt;grpProperties.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnDSMSettings.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grpProperties.Name" xml:space="preserve">
-    <value>grpProperties</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en</value>
-  </metadata>
+  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Name" xml:space="preserve">
+    <value>DSMRibbon.OfficeMenu</value>
+  </data>
+  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.OfficeMenuView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;DSMRibbon.OfficeMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DSMRibbon.OfficeMenu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DSMRibbon</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GenericRibbonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

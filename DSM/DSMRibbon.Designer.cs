@@ -39,6 +39,7 @@ namespace DSM
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
             this.btnDSMSettings = this.Factory.CreateRibbonButton();
+            this.tglDisable = this.Factory.CreateRibbonToggleButton();
             this.tab1.SuspendLayout();
             this.grpProperties.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@ namespace DSM
             // 
             // grpProperties
             // 
+            this.grpProperties.Items.Add(this.tglDisable);
             this.grpProperties.Items.Add(this.btnDSMSettings);
             resources.ApplyResources(this.grpProperties, "grpProperties");
             this.grpProperties.Name = "grpProperties";
@@ -61,18 +63,25 @@ namespace DSM
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.btnDSMSettings, "btnDSMSettings");
             this.btnDSMSettings.Image = global::DSM.Properties.Resources.delaySendIcon;
+            resources.ApplyResources(this.btnDSMSettings, "btnDSMSettings");
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;
             this.btnDSMSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDSMSettings_Click);
+            // 
+            // tglDisable
+            // 
+            this.tglDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
+            resources.ApplyResources(this.tglDisable, "tglDisable");
+            this.tglDisable.Name = "tglDisable";
+            this.tglDisable.ShowImage = true;
+            this.tglDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tglDisable_Click);
             // 
             // DSMRibbon
             // 
             this.Name = "DSMRibbon";
             this.RibbonType = "Microsoft.Outlook.Mail.Compose";
             this.Tabs.Add(this.tab1);
-            resources.ApplyResources(this, "$this");
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DSMRibbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
@@ -87,6 +96,7 @@ namespace DSM
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDSMSettings;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton tglDisable;
     }
 
     partial class ThisRibbonCollection

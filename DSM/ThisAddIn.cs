@@ -15,6 +15,7 @@ namespace DSM
         private Outlook.Inspector inspector;
         private CustomTaskPane taskPane;
         private bool delaySingleEmail;
+        private bool disableDSM;
         private DateTime sendDateTime;
 
         public InspectorWrapper(Outlook.Inspector inspector)
@@ -96,6 +97,21 @@ namespace DSM
                 //If we get a new value update the taskPane at the same time...
                 sendDateTime = value;
                 ((WarningUserControl)taskPane.Control).UpdateDateTime(sendDateTime);
+                //The toggle might be set to true... set it to false and make sure the taskpane is visible
+                if (disableDSM)
+                {
+                    //task pane visibility is set in the Disable setter
+                    Disable = false;
+                }
+            }
+        }
+        public bool Disable
+        {
+            get => disableDSM;
+            set
+            {
+                disableDSM = value;
+                taskPane.Visible = !disableDSM;
             }
         }
 
