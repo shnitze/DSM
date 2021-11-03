@@ -12,11 +12,8 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            //if (Properties.Settings.Default.EnableDSM)
-            //{
-            //    var warning = new WarningTaskPane();
-            //    Globals.ThisAddIn.CustomTaskPanes.Add(warning, "Warning");
-            //}
+            //We should only have the disable button if DSM is enabled
+            tglDisable.Visible = Properties.Settings.Default.EnableDSM;
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
@@ -31,19 +28,11 @@ namespace DSM
         {
             var inspector = (Inspector)e.Control;
             var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
-
-            if (wrapper.Disable)
-            {
-                wrapper.Disable = false;
-                tglDisable.Checked = false;
-                tglDisable.Label = Properties.Resources.disableDSM;
-            }
-            else
-            {
-                wrapper.Disable = true;
-                tglDisable.Checked = true;
-                tglDisable.Label = Properties.Resources.enableDSM;
-            }
+            
+            wrapper.Disable = true;
+            tglDisable.Visible = false;
+            tglDisable.Label = Properties.Resources.enableDSM;
+            
         }
     }
 }

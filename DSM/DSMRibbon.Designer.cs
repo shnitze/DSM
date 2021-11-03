@@ -38,8 +38,8 @@ namespace DSM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DSMRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
-            this.btnDSMSettings = this.Factory.CreateRibbonButton();
             this.tglDisable = this.Factory.CreateRibbonToggleButton();
+            this.btnDSMSettings = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.grpProperties.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,14 @@ namespace DSM
             this.grpProperties.Name = "grpProperties";
             this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
             // 
+            // tglDisable
+            // 
+            this.tglDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
+            resources.ApplyResources(this.tglDisable, "tglDisable");
+            this.tglDisable.Name = "tglDisable";
+            this.tglDisable.ShowImage = true;
+            this.tglDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tglDisable_Click);
+            // 
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -68,14 +76,6 @@ namespace DSM
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;
             this.btnDSMSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDSMSettings_Click);
-            // 
-            // tglDisable
-            // 
-            this.tglDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
-            resources.ApplyResources(this.tglDisable, "tglDisable");
-            this.tglDisable.Name = "tglDisable";
-            this.tglDisable.ShowImage = true;
-            this.tglDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tglDisable_Click);
             // 
             // DSMRibbon
             // 

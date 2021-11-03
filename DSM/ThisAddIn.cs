@@ -172,13 +172,18 @@ namespace DSM
                     sendDateTime = Properties.Settings.Default.ToggleSendDateTime;
                 }
 
-                //Look in the InspectorWrapper to see if we have a single email DSM or disable[TODO]
+                //Look in the InspectorWrapper to see if we have a single email DSM or disable
                 var inspectorWrapper = InspectorWrappers[mailItem.GetInspector];
                 if (inspectorWrapper != null)
                 {
                     if (inspectorWrapper.DelaySingleEmail)
                     {
                         sendDateTime = inspectorWrapper.SendDateTime;
+                    }
+                    if (inspectorWrapper.Disable)
+                    {
+                        //We don't need to set a deferred send time...
+                        return;
                     }
                 }
 
