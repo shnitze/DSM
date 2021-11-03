@@ -20,18 +20,26 @@ namespace DSM
         {
             var frmSettings = new DSMSettings(false);
 
-            //If the user enables single email DSM, we should update the warning message with the new send time...
-            frmSettings.Show();
+            if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //The user set a new send time... we need to make the disable button visible again...
+                tglDisable.Visible = true;
+
+                //We also need to reset the disable flag in the InspectorWrapper
+                var inspector = (Inspector)e.Control.Context;
+                var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+
+                wrapper.Disable = false;
+            }
         }
 
         private void tglDisable_Click(object sender, RibbonControlEventArgs e)
         {
-            var inspector = (Inspector)e.Control;
+            var inspector = (Inspector)e.Control.Context;
             var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
             
             wrapper.Disable = true;
             tglDisable.Visible = false;
-            tglDisable.Label = Properties.Resources.enableDSM;
             
         }
     }
