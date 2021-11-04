@@ -13,7 +13,7 @@ namespace DSM
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
             //We should only have the disable button if DSM is enabled
-            tglDisable.Visible = Properties.Settings.Default.EnableDSM;
+            btnDisable.Visible = Properties.Settings.Default.EnableDSM;
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
@@ -23,7 +23,7 @@ namespace DSM
             if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //The user set a new send time... we need to make the disable button visible again...
-                tglDisable.Visible = true;
+                btnDisable.Visible = true;
 
                 //We also need to reset the disable flag in the InspectorWrapper
                 var inspector = (Inspector)e.Control.Context;
@@ -39,7 +39,7 @@ namespace DSM
             var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
             
             wrapper.Disable = true;
-            tglDisable.Visible = false;
+            btnDisable.Visible = false;
             
         }
     }
