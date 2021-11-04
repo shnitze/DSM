@@ -118,15 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnOK.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 153</value>
+    <value>373, 188</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>108, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
@@ -150,17 +153,17 @@
   <data name="lblNote.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblNote.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 102</value>
+  <data name="lblNote.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="lblNote.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+  <data name="lblNote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 126</value>
   </data>
   <data name="lblNote.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>300, 0</value>
+    <value>400, 0</value>
   </data>
   <data name="lblNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 26</value>
+    <value>397, 36</value>
   </data>
   <data name="lblNote.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -183,14 +186,14 @@
   <data name="lblSendAt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 38</value>
+  <data name="lblSendAt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="lblSendAt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+  <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 52</value>
   </data>
   <data name="lblSendAt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 13</value>
+    <value>97, 18</value>
   </data>
   <data name="lblSendAt.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -214,13 +217,13 @@
     <value>hh:mm tt</value>
   </data>
   <data name="timePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 37</value>
+    <value>279, 49</value>
   </data>
   <data name="timePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="timePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
+    <value>161, 24</value>
   </data>
   <data name="timePicker.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -241,13 +244,13 @@
     <value>dd/MM/yyyy</value>
   </data>
   <data name="datePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 37</value>
+    <value>130, 49</value>
   </data>
   <data name="datePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="datePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 20</value>
+    <value>143, 24</value>
   </data>
   <data name="datePicker.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -264,17 +267,20 @@
   <data name="&gt;&gt;datePicker.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 10</value>
+    <value>12, 12</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 81</value>
+    <value>467, 100</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -294,14 +300,17 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 153</value>
+    <value>248, 188</value>
   </data>
   <data name="btnSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>108, 28</value>
   </data>
   <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -321,14 +330,17 @@
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 153</value>
+    <value>12, 188</value>
   </data>
   <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>108, 28</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -348,14 +360,17 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>fr</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>372, 188</value>
+    <value>496, 231</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -654,7 +669,7 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value> DSM Configuration</value>
