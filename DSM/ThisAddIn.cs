@@ -24,7 +24,6 @@ namespace DSM
             ((Outlook.InspectorEvents_Event)this.inspector).Close += new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
 
             var userControl = new WarningUserControl();
-            userControl.ClientSizeChanged += UserControl_SizeChanged;
 
             taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), Properties.Resources.warning, inspector);
             taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
@@ -36,32 +35,6 @@ namespace DSM
             {
                 taskPane.Visible = true;
             }
-        }
-
-        private void UserControl_SizeChanged(object sender, EventArgs e)
-        {
-            //This can cause an exception when the component is initialized
-            //For now, absorb the exception
-            try
-            {
-                //we're really only concerned with the height...
-                if (taskPane.DockPosition == Office.MsoCTPDockPosition.msoCTPDockPositionTop
-                    && taskPane.Height != 80)
-                {
-                    //if the user is dragging the taskPane, cancel it...
-                    SendKeys.Send("{ESC}");
-                    //Set it's height back to original
-                    taskPane.Height = 80;
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void TaskPane_VisibleChanged(object sender, EventArgs e)
-        {
-            //this may not be needed
         }
 
         private void InspectorWrapper_Close()
@@ -189,7 +162,7 @@ namespace DSM
 
                 if (sendDateTime != DateTime.MinValue)
                 {
-                    if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime), Properties.Resources.warning, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime), Properties.Resources.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         mailItem.DeferredDeliveryTime = sendDateTime;
                     }

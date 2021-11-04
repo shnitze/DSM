@@ -109,7 +109,11 @@ namespace DSM.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This email will be sent at {0} and will be moved to the Outbox folder until sending. Do you want to continue?.
+        ///   Looks up a localized string similar to This email will be sent at {0} and will be moved to the Outbox folder until sending.
+        ///
+        ///Note: Outlook must be open and connected at the time of sending.
+        ///
+        ///Do you want to continue?.
         /// </summary>
         internal static string sendDialog {
             get {

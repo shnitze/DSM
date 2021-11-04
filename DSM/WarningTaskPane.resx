@@ -139,9 +139,8 @@
   <data name="&gt;&gt;lblWarningMessage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblWarningMessage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;lblWarningMessage.Name" xml:space="preserve">
+    <value>lblWarningMessage</value>
   </data>
   <data name="&gt;&gt;lblWarningMessage.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -155,8 +154,9 @@
   <data name="&gt;&gt;lblWarningMessage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lblWarningMessage.Name" xml:space="preserve">
-    <value>lblWarningMessage</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblWarningMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="lblWarningMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
