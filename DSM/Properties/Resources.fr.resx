@@ -133,4 +133,7 @@ Voulez-vous continuer?</value>
   <data name="warning" xml:space="preserve">
     <value>Attention</value>
   </data>
+  <data name="warningMessage" xml:space="preserve">
+    <value>Le mode d'envoi différé est activé. Ce e-mail sera envoyé à {0}. Outlook doit être ouvert et connecté au RPV au moment de l'envoi.</value>
+  </data>
 </root>
