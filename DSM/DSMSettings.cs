@@ -111,10 +111,17 @@ namespace DSM
                 //We're deferring a single email, set the send time in the InspectorWrapper
                 //Get current MailItem
                 var inspector = Globals.ThisAddIn.Application.ActiveInspector();
+                var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
 
-                Globals.ThisAddIn.InspectorWrappers[inspector].DelaySingleEmail = true;
-                Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+                wrapper.DelaySingleEmail = true;
+                wrapper.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+                //We also need to reset the disable flag in the InspectorWrapper
+                wrapper.Disable = false;
+                //The user set a new send time... we need to make the disable button visible again...
+                Globals.Ribbons.DSMRibbon.btnDisable.Visible = true;
             }
+
+
 
             this.Close();
         }

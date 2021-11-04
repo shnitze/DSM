@@ -61,6 +61,16 @@ namespace DSM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon delaySend {
+            get {
+                object obj = ResourceManager.GetObject("delaySend", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap delaySendIcon {
@@ -99,7 +109,11 @@ namespace DSM.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This email will be sent at {0} and will be moved to the Outbox folder until sending. Do you want to continue?.
+        ///   Looks up a localized string similar to This email will be sent at {0} and will be moved to the Outbox folder until sending.
+        ///
+        ///Note: Outlook must be open and connected at the time of sending.
+        ///
+        ///Do you want to continue?.
         /// </summary>
         internal static string sendDialog {
             get {

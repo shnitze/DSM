@@ -38,6 +38,7 @@ namespace DSM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DSMRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.grpProperties = this.Factory.CreateRibbonGroup();
+            this.btnDisable = this.Factory.CreateRibbonButton();
             this.btnDSMSettings = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.grpProperties.SuspendLayout();
@@ -53,10 +54,20 @@ namespace DSM
             // 
             // grpProperties
             // 
+            this.grpProperties.Items.Add(this.btnDisable);
             this.grpProperties.Items.Add(this.btnDSMSettings);
             resources.ApplyResources(this.grpProperties, "grpProperties");
             this.grpProperties.Name = "grpProperties";
             this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
+            // 
+            // btnDisable
+            // 
+            this.btnDisable.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            resources.ApplyResources(this.btnDisable, "btnDisable");
+            this.btnDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
+            this.btnDisable.Name = "btnDisable";
+            this.btnDisable.ShowImage = true;
+            this.btnDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDisable_Click);
             // 
             // btnDSMSettings
             // 
@@ -87,6 +98,7 @@ namespace DSM
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpProperties;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDSMSettings;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnDisable;
     }
 
     partial class ThisRibbonCollection

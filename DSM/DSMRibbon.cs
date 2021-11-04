@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using Microsoft.Office.Interop.Outlook;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,25 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            //if (Properties.Settings.Default.EnableDSM)
-            //{
-            //    var warning = new WarningTaskPane();
-            //    Globals.ThisAddIn.CustomTaskPanes.Add(warning, "Warning");
-            //}
+            //We should only have the disable button if DSM is enabled
+            btnDisable.Visible = Properties.Settings.Default.EnableDSM;
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
         {
             var frmSettings = new DSMSettings(false);
 
-            //If the user enables single email DSM, we should update the warning message with the new send time...
             frmSettings.Show();
+        }
+
+        private void btnDisable_Click(object sender, RibbonControlEventArgs e)
+        {
+            var inspector = (Inspector)e.Control.Context;
+            var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+            
+            wrapper.Disable = true;
+            btnDisable.Visible = false;
+            
         }
     }
 }
