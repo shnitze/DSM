@@ -67,7 +67,7 @@ namespace DSM
             this.btnDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
             this.btnDisable.Name = "btnDisable";
             this.btnDisable.ShowImage = true;
-            this.btnDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tglDisable_Click);
+            this.btnDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDisable_Click);
             // 
             // btnDSMSettings
             // 

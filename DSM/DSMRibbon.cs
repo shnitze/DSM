@@ -20,20 +20,10 @@ namespace DSM
         {
             var frmSettings = new DSMSettings(false);
 
-            if (frmSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                //The user set a new send time... we need to make the disable button visible again...
-                btnDisable.Visible = true;
-
-                //We also need to reset the disable flag in the InspectorWrapper
-                var inspector = (Inspector)e.Control.Context;
-                var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
-
-                wrapper.Disable = false;
-            }
+            frmSettings.Show();
         }
 
-        private void tglDisable_Click(object sender, RibbonControlEventArgs e)
+        private void btnDisable_Click(object sender, RibbonControlEventArgs e)
         {
             var inspector = (Inspector)e.Control.Context;
             var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
