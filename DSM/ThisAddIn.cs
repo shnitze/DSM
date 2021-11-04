@@ -109,6 +109,14 @@ namespace DSM
             {
                 Inspectors_NewInspector(inspector);
             }
+
+            //To avoid errors, we should make sure the SendDateTime in the Settings has a value
+            //if not set it to today...
+            if (Properties.Settings.Default.ToggleSendDateTime == null || Properties.Settings.Default.ToggleSendDateTime.Equals(default))
+            {
+                Properties.Settings.Default.ToggleSendDateTime = DateTime.Now;
+                Properties.Settings.Default.Save();
+            }
         }
 
         /// <summary>

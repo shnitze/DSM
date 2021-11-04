@@ -221,6 +221,9 @@
     <EmbeddedResource Include="DSMSettings.resx">
       <DependentUpon>DSMSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DSMToggleRibbon.fr.resx">
+      <DependentUpon>DSMToggleRibbon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DSMToggleRibbon.resx">
       <DependentUpon>DSMToggleRibbon.cs</DependentUpon>
     </EmbeddedResource>
