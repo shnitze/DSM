@@ -118,10 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblWarningMessage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
   <data name="lblWarningMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>883, 17</value>
+    <value>1143, 23</value>
   </data>
   <data name="lblWarningMessage.Text" xml:space="preserve">
     <value>Le mode d'envoi différé est activé. Ce e-mail sera envoyé à {dateTime}. Outlook doit être ouvert et connecté au RPV au moment de l'envoi.</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>956, 49</value>
   </data>
 </root>

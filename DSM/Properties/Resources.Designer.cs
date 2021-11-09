@@ -129,5 +129,14 @@ namespace DSM.Properties {
                 return ResourceManager.GetString("warning", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay Send Mode is enabled. This email will be sent at {0}. Outlook must be open and connected to the VPN at the time of sending..
+        /// </summary>
+        internal static string warningMessage {
+            get {
+                return ResourceManager.GetString("warningMessage", resourceCulture);
+            }
+        }
     }
 }

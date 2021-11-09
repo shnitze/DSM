@@ -143,4 +143,7 @@ Do you want to continue?</value>
   <data name="warning" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="warningMessage" xml:space="preserve">
+    <value>Delay Send Mode is enabled. This email will be sent at {0}. Outlook must be open and connected to the VPN at the time of sending.</value>
+  </data>
 </root>

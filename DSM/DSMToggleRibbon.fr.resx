@@ -117,23 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="disableDSM" xml:space="preserve">
-    <value>Désactiver mode délai d'envoi</value>
-  </data>
-  <data name="enableDSM" xml:space="preserve">
+  <data name="btnToggleDSM.Label" xml:space="preserve">
     <value>Activer mode délai d'envoi</value>
-  </data>
-  <data name="sendDialog" xml:space="preserve">
-    <value>Ce email sera envoyé à {0} et sera déplacé dans le dossier Boîte d'envoi jusqu'à l'envoi.
-
-Notez: Outlook doit être ouvert et connecté au temps de l'envoi.
-
-Voulez-vous continuer?</value>
-  </data>
-  <data name="warning" xml:space="preserve">
-    <value>Attention</value>
-  </data>
-  <data name="warningMessage" xml:space="preserve">
-    <value>Le mode d'envoi différé est activé. Ce e-mail sera envoyé à {0}. Outlook doit être ouvert et connecté au RPV au moment de l'envoi.</value>
   </data>
 </root>
