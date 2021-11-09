@@ -170,7 +170,7 @@ namespace DSM
 
                 if (sendDateTime != DateTime.MinValue)
                 {
-                    if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime), Properties.Resources.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime.ToString("dd/MM/yyyy hh:mm tt")), Properties.Resources.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         mailItem.DeferredDeliveryTime = sendDateTime;
                     }
