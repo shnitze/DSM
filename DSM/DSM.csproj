@@ -259,6 +259,7 @@
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="sds.pfx" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.cs</DependentUpon>
     </None>
@@ -284,10 +285,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DSM_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>sds.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A01B0A9AD7565DC9E0C383E67739160DD7B06F9D</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>FE7DD6D65617C3200FB6AC6FAF62B89D5BEC5021</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

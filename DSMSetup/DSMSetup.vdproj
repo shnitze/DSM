@@ -203,7 +203,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:..\\DSM.Setup\\Release\\DSM.Setup.msi"
+        "OutputFilename" = "8:Release\\DSMSetup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -601,9 +601,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:DSM (1.0) (SRU-UMPL TBD)"
+        "ProductName" = "8:DSM (1.0)"
         "ProductCode" = "8:{FC877B62-5B59-4651-9567-AC1F8EC146D3}"
-        "PackageCode" = "8:{6B920FD7-9591-4786-8B0C-5D73AF7393DA}"
+        "PackageCode" = "8:{8B1AFC1B-9080-4BFA-9F6B-6A58A7F7D6CD}"
         "UpgradeCode" = "8:{F16725D4-26CA-4E3A-881A-2572B9F25BBF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -664,20 +664,6 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_193A4EEF894A4D3DA4B6BD503A9162C9"
-                            {
-                            "Name" = "8:[Manufacturer]"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                }
-                                "Values"
-                                {
-                                }
-                            }
                         }
                         "Values"
                         {
@@ -784,7 +770,7 @@
                                                                     }
                                                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_ED88232750684B1B8DF6EED19A2441BA"
                                                                     {
-                                                                    "Name" = "8:LoadBehaviour"
+                                                                    "Name" = "8:LoadBehavior"
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:3"
