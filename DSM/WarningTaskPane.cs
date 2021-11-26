@@ -28,8 +28,6 @@ namespace DSM
 
         public WarningUserControl()
         {
-            //TODO: Get string from resources...
-            //TODO: 
             InitializeComponent();
             //On load the message should display the Toggle send DateTime
             lblWarningMessage.Text = string.Format(Properties.Resources.warningMessage, Properties.Settings.Default.ToggleSendDateTime.ToString("dd/MM/yyyy hh:mm tt"));
@@ -70,6 +68,11 @@ namespace DSM
             //For now we only have one taskpane so we just remove the first one in 
             //the list... This may be an issue if we have more than one task pane
             Globals.ThisAddIn.CustomTaskPanes.RemoveAt(0);
+        }
+
+        private void WarningUserControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

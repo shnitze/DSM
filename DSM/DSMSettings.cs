@@ -33,6 +33,9 @@ namespace DSM
             else
             {
                 lblNote.Visible = false;
+
+                //We should check if the email is sendable before enabling the SendLater button
+
             }
         }
 
@@ -129,6 +132,29 @@ namespace DSM
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// This Focus event triggers when the settings dialog is put in focus.
+        /// This checks that there are recipients before enabling the Send Later button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DSMSettings_Activated(object sender, EventArgs e)
+        {
+            if (!_toggle)
+            {
+                var inspector = Globals.ThisAddIn.Application.ActiveInspector();
+
+                if (((MailItem)inspector.CurrentItem).Recipients.Count == 0)
+                {
+                    btnSave.Enabled = false;
+                }
+                else
+                {
+                    btnSave.Enabled = true;
+                }
+            }
         }
     }
 }

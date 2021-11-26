@@ -1,4 +1,7 @@
 ﻿
+using System.Globalization;
+using System.Threading;
+
 namespace DSM
 {
     partial class DSMRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
@@ -11,6 +14,9 @@ namespace DSM
         public DSMRibbon()
             : base(Globals.Factory.GetRibbonFactory())
         {
+            //For some reason, this is executed in a different thread or before the correct culture is set...
+            //Let's force it to the correct culture
+
             InitializeComponent();
         }
 
@@ -63,8 +69,8 @@ namespace DSM
             // btnDisable
             // 
             this.btnDisable.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.btnDisable, "btnDisable");
             this.btnDisable.Image = global::DSM.Properties.Resources.disableDSMIcon;
+            resources.ApplyResources(this.btnDisable, "btnDisable");
             this.btnDisable.Name = "btnDisable";
             this.btnDisable.ShowImage = true;
             this.btnDisable.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDisable_Click);
@@ -72,8 +78,8 @@ namespace DSM
             // btnDSMSettings
             // 
             this.btnDSMSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.btnDSMSettings, "btnDSMSettings");
             this.btnDSMSettings.Image = global::DSM.Properties.Resources.delaySendIcon;
+            resources.ApplyResources(this.btnDSMSettings, "btnDSMSettings");
             this.btnDSMSettings.Name = "btnDSMSettings";
             this.btnDSMSettings.ShowImage = true;
             this.btnDSMSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDSMSettings_Click);
@@ -83,7 +89,6 @@ namespace DSM
             this.Name = "DSMRibbon";
             this.RibbonType = "Microsoft.Outlook.Mail.Compose";
             this.Tabs.Add(this.tab1);
-            resources.ApplyResources(this, "$this");
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DSMRibbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();

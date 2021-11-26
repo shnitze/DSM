@@ -118,39 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 150</value>
+  </data>
+  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 28</value>
+  </data>
   <data name="lblNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 36</value>
+    <value>287, 30</value>
   </data>
   <data name="lblNote.Text" xml:space="preserve">
     <value>Notez bien: Lorsqu'il est activé, chaque e-mail sera reporté à l'heure spécifiée.
 </value>
   </data>
   <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 46</value>
+    <value>13, 46</value>
   </data>
   <data name="lblSendAt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 18</value>
+    <value>60, 15</value>
   </data>
   <data name="lblSendAt.Text" xml:space="preserve">
     <value>Envoyer à</value>
   </data>
   <data name="timePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 44</value>
+    <value>212, 44</value>
   </data>
   <data name="timePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 24</value>
+    <value>129, 21</value>
   </data>
   <data name="datePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 44</value>
+    <value>77, 44</value>
   </data>
   <data name="datePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 24</value>
+    <value>131, 21</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Date d'envoi</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 188</value>
+    <value>144, 150</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 28</value>
@@ -158,8 +164,17 @@
   <data name="btnSave.Text" xml:space="preserve">
     <value>Envoyer plus tard</value>
   </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 150</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 28</value>
+  </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Annuler</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>369, 187</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

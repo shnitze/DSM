@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using Microsoft.Office.Interop.Outlook;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace DSM
                 Properties.Settings.Default.EnableDSM = false;
                 Properties.Settings.Default.Save();
 
-                btnToggleDSM.Label = "Enable Delay Send Mode";
+                btnToggleDSM.Label = Properties.Resources.enableDSM;
                 btnToggleDSM.Image = Properties.Resources.delaySendIcon;
             }
             else
@@ -50,8 +51,35 @@ namespace DSM
                     Properties.Settings.Default.Save();
 
                     //We should also update the UI so the user knows the addin is enabled...
-                    btnToggleDSM.Label = "Disable Delay Send Mode";
+                    btnToggleDSM.Label = Properties.Resources.disableDSM;
                     btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
+
+                    //If there are any Inspectors open, we need to update it...
+                    var wrappers = Globals.ThisAddIn.InspectorWrappers;
+                    foreach(var inspector in wrappers.Keys)
+                    {
+                        //If DSM is fully disabled for this inspector, change the SendDateTime
+                        if (!wrappers[inspector].DelaySingleEmail)
+                        {
+                            wrappers[inspector].SendDateTime = settings.SendDateTime;
+                            wrappers[inspector].Disable = false;
+
+                            //we also need to enable the disable button
+                            foreach (var ribbon in Globals.Ribbons)
+                            {
+                                if (ribbon is DSMRibbon dsmRibbon)
+                                {
+                                    var ribbonInspector = (Inspector)dsmRibbon.Context;
+                                    if (ribbonInspector.CurrentItem.Equals(inspector.CurrentItem))
+                                    {
+                                        dsmRibbon.btnDisable.Enabled = true;
+                                        
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 

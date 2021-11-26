@@ -18,9 +18,20 @@ namespace DSM
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
         {
-            var frmSettings = new DSMSettings(false);
+            //There should only be one settings dialog per inspector...
+            var inspector = (Inspector)e.Control.Context;
+            var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
 
-            frmSettings.Show();
+            var frmSettings = wrapper.DSMSettings;
+
+            if (frmSettings.Visible)
+            {
+                frmSettings.Focus();
+            }
+            else
+            {
+                frmSettings.Show();
+            }
         }
 
         private void btnDisable_Click(object sender, RibbonControlEventArgs e)

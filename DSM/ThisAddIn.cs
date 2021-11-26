@@ -7,13 +7,18 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using System.Windows.Forms;
 using Microsoft.Office.Tools;
+using System.Windows.Threading;
+using System.Threading;
+using System.Globalization;
+using Microsoft.Office.Core;
 
 namespace DSM
 {
     public class InspectorWrapper
     {
         private Outlook.Inspector inspector;
-        private CustomTaskPane taskPane;
+        private Microsoft.Office.Tools.CustomTaskPane taskPane;
+        private DSMSettings settingsDialog;
         private bool delaySingleEmail;
         private bool disableDSM;
         private DateTime sendDateTime;
@@ -27,6 +32,9 @@ namespace DSM
 
             taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new WarningUserControl(), Properties.Resources.warning, inspector);
             taskPane.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionTop;
+            taskPane.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+            taskPane.VisibleChanged += TaskPane_VisibleChanged;
+
             taskPane.Height = 80;
 
             //We should only make it visible if DSM is enabled...
@@ -34,6 +42,14 @@ namespace DSM
             if (Properties.Settings.Default.EnableDSM)
             {
                 taskPane.Visible = true;
+            }
+        }
+
+        private void TaskPane_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!taskPane.Visible && !disableDSM)
+            {
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => { taskPane.Visible = true; }));
             }
         }
 
@@ -49,7 +65,7 @@ namespace DSM
             ((Outlook.InspectorEvents_Event)this.inspector).Close -= new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
         }
 
-        public CustomTaskPane CustomTaskPane => taskPane;
+        public Microsoft.Office.Tools.CustomTaskPane CustomTaskPane => taskPane;
         public bool DelaySingleEmail
         {
             get => delaySingleEmail;
@@ -88,6 +104,17 @@ namespace DSM
             }
         }
 
+        public DSMSettings DSMSettings
+        {
+            get
+            {
+                if (settingsDialog == null || settingsDialog.IsDisposed)
+                    settingsDialog = new DSMSettings(false);
+
+                return settingsDialog;
+            }
+        }
+
     }
 
     public partial class ThisAddIn
@@ -101,6 +128,8 @@ namespace DSM
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
             inspectors = this.Application.Inspectors;
             Application.ItemSend += Application_ItemSend;
             inspectors.NewInspector += Inspectors_NewInspector;
@@ -117,6 +146,15 @@ namespace DSM
                 Properties.Settings.Default.ToggleSendDateTime = DateTime.Now;
                 Properties.Settings.Default.Save();
             }
+        }
+
+        protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            Outlook.Application app = this.GetHostItem<Outlook.Application>(typeof(Outlook.Application), "Application");
+            int lcid = app.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
+
+            return base.CreateRibbonExtensibilityObject();
         }
 
         /// <summary>

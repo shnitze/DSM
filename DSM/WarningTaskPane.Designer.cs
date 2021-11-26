@@ -45,6 +45,7 @@ namespace DSM
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.lblWarningMessage);
             this.Name = "WarningUserControl";
+            this.Load += new System.EventHandler(this.WarningUserControl_Load);
             this.Resize += new System.EventHandler(this.WarningTaskPane_SizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();

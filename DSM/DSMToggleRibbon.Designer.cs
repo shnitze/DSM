@@ -60,8 +60,8 @@ namespace DSM
             // btnToggleDSM
             // 
             this.btnToggleDSM.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.btnToggleDSM, "btnToggleDSM");
             this.btnToggleDSM.Image = global::DSM.Properties.Resources.delaySendIcon;
+            resources.ApplyResources(this.btnToggleDSM, "btnToggleDSM");
             this.btnToggleDSM.Name = "btnToggleDSM";
             this.btnToggleDSM.ShowImage = true;
             this.btnToggleDSM.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnToggleDSM_Click);
@@ -71,7 +71,6 @@ namespace DSM
             this.Name = "DSMToggleRibbon";
             this.RibbonType = "Microsoft.Outlook.Explorer";
             this.Tabs.Add(this.tab1);
-            resources.ApplyResources(this, "$this");
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.DSMToggleRibbon_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
