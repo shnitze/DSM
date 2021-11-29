@@ -121,10 +121,20 @@ namespace DSM
                 //We also need to reset the disable flag in the InspectorWrapper
                 wrapper.Disable = false;
                 //The user set a new send time... we need to make the disable button visible again...
-                Globals.Ribbons.DSMRibbon.btnDisable.Visible = true;
+                foreach (var ribbon in Globals.Ribbons)
+                {
+                    if (ribbon is DSMRibbon dsmRibbon)
+                    {
+                        //get ribbon inspector
+                        var ribbonInspector = (Inspector)dsmRibbon.Context;
+                        if (ribbonInspector.CurrentItem.Equals(inspector.CurrentItem))
+                        {
+                            dsmRibbon.btnDisable.Visible = true;
+                            break;
+                        }
+                    }
+                }
             }
-
-
 
             this.Close();
         }

@@ -72,7 +72,7 @@ namespace DSM
                                     var ribbonInspector = (Inspector)dsmRibbon.Context;
                                     if (ribbonInspector.CurrentItem.Equals(inspector.CurrentItem))
                                     {
-                                        dsmRibbon.btnDisable.Enabled = true;
+                                        dsmRibbon.btnDisable.Visible = true;
                                         
                                         break;
                                     }
