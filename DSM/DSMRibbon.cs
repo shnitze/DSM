@@ -40,6 +40,8 @@ namespace DSM
             var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
             
             wrapper.Disable = true;
+            wrapper.DelaySingleEmail = false;
+
             btnDisable.Visible = false;
             
         }

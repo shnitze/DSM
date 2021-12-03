@@ -72,7 +72,7 @@ namespace DSM
             set
             {
                 delaySingleEmail = value;
-                if (!taskPane.Visible)
+                if (delaySingleEmail && !taskPane.Visible)
                 {
                     taskPane.Visible = true;
                 }

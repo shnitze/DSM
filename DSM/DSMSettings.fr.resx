@@ -155,15 +155,6 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Date d'envoi</value>
   </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 150</value>
-  </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 28</value>
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Envoyer plus tard</value>
-  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 150</value>
   </data>

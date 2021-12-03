@@ -25,17 +25,9 @@ namespace DSM
             InitializeComponent();
 
             //When setting the DSM toggle date, we don't want the Send Later button
-            if (_toggle)
-            {
-                btnSave.Enabled = false;
-                btnSave.Visible = false;
-            }
-            else
+            if (!_toggle)
             {
                 lblNote.Visible = false;
-
-                //We should check if the email is sendable before enabling the SendLater button
-
             }
         }
 
@@ -152,19 +144,7 @@ namespace DSM
         /// <param name="e"></param>
         private void DSMSettings_Activated(object sender, EventArgs e)
         {
-            if (!_toggle)
-            {
-                var inspector = Globals.ThisAddIn.Application.ActiveInspector();
 
-                if (((MailItem)inspector.CurrentItem).Recipients.Count == 0)
-                {
-                    btnSave.Enabled = false;
-                }
-                else
-                {
-                    btnSave.Enabled = true;
-                }
-            }
         }
     }
 }

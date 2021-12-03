@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
@@ -30,12 +31,26 @@ namespace DSM
         {
             InitializeComponent();
             //On load the message should display the Toggle send DateTime
-            lblWarningMessage.Text = string.Format(Properties.Resources.warningMessage, Properties.Settings.Default.ToggleSendDateTime.ToString("dd/MM/yyyy hh:mm tt"));
+            if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                lblWarningMessage.Text = string.Format(Properties.Resources.warningMessage, Properties.Settings.Default.ToggleSendDateTime.ToString("dd/MM/yyyy HH:mm"));
+            }
+            else
+            {
+                lblWarningMessage.Text = string.Format(Properties.Resources.warningMessage, Properties.Settings.Default.ToggleSendDateTime.ToString("dd/MM/yyyy hh:mm tt"));
+            }
         }
 
         public void UpdateDateTime(DateTime dateTime)
         {
-            WarningMessage = string.Format(Properties.Resources.warningMessage, dateTime.ToString("dd/MM/yyyy hh:mm tt"));
+            if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                WarningMessage = string.Format(Properties.Resources.warningMessage, dateTime.ToString("dd/MM/yyyy H:mm"));
+            }
+            else
+            {
+                WarningMessage = string.Format(Properties.Resources.warningMessage, dateTime.ToString("dd/MM/yyyy h:mm tt"));
+            }
             Update();
         }
 
