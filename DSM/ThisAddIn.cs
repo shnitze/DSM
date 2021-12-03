@@ -164,9 +164,12 @@ namespace DSM
         /// <param name="Inspector"></param>
         private void Inspectors_NewInspector(Outlook.Inspector Inspector)
         {
-            if (Inspector.CurrentItem is Outlook.MailItem)
+            if (Inspector.CurrentItem is Outlook.MailItem mailItem)
             {
-                inspectorWrappersValue.Add(Inspector, new InspectorWrapper(Inspector));
+                if (mailItem != null && !mailItem.Sent)
+                {
+                    inspectorWrappersValue.Add(Inspector, new InspectorWrapper(Inspector));
+                }
             }
         }
 
