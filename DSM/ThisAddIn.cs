@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using System.Threading;
 using System.Globalization;
 using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Outlook;
 
 namespace DSM
 {
@@ -49,7 +50,7 @@ namespace DSM
         {
             if (!taskPane.Visible && !disableDSM)
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => { taskPane.Visible = true; }));
+                Dispatcher.CurrentDispatcher.BeginInvoke(new System.Action(() => { taskPane.Visible = true; }));
             }
         }
 
@@ -168,7 +169,53 @@ namespace DSM
             {
                 if (mailItem != null && !mailItem.Sent)
                 {
-                    inspectorWrappersValue.Add(Inspector, new InspectorWrapper(Inspector));
+                    var wrapper = new InspectorWrapper(Inspector);
+
+                    if (mailItem.Parent is MAPIFolder folder)
+                    {
+                        if (folder != null)
+                        {
+                            //1/1/4501 12:00PM is the default DateTIme in Outlook...
+                            if (mailItem.DeferredDeliveryTime != new DateTime(4501,1,1))
+                            {
+                                wrapper.DelaySingleEmail = true;
+                                wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
+                                
+                                foreach (var ribbon in Globals.Ribbons)
+                                {
+                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                    {
+                                        dsmRibbon.btnDisable.Visible = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (Properties.Settings.Default.EnableDSM)
+                            {
+                                foreach (var ribbon in Globals.Ribbons)
+                                {
+                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                    {
+                                        dsmRibbon.btnDisable.Visible = Properties.Settings.Default.EnableDSM;
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var ribbon in Globals.Ribbons)
+                                {
+                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                    {
+                                        dsmRibbon.btnDisable.Visible = false;
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                    inspectorWrappersValue.Add(Inspector, wrapper);
                 }
             }
         }

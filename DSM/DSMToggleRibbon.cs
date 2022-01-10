@@ -15,11 +15,16 @@ namespace DSM
             {
                 btnToggleDSM.Label = Properties.Resources.disableDSM;
                 btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
+                btnToggleDSM.ScreenTip = Properties.Resources.dsmTitle;
+                btnToggleDSM.SuperTip = Properties.Resources.disableDSM;
+
             }
             else
             {
                 btnToggleDSM.Label = Properties.Resources.enableDSM;
                 btnToggleDSM.Image = Properties.Resources.delaySendIcon;
+                btnToggleDSM.ScreenTip = Properties.Resources.dsmTitle;
+                btnToggleDSM.SuperTip = Properties.Resources.enableDSM;
             }
         }
 
@@ -38,6 +43,8 @@ namespace DSM
 
                 btnToggleDSM.Label = Properties.Resources.enableDSM;
                 btnToggleDSM.Image = Properties.Resources.delaySendIcon;
+                btnToggleDSM.ScreenTip = Properties.Resources.dsmTitle;
+                btnToggleDSM.SuperTip = Properties.Resources.enableDSM;
             }
             else
             {
@@ -53,15 +60,18 @@ namespace DSM
                     //We should also update the UI so the user knows the addin is enabled...
                     btnToggleDSM.Label = Properties.Resources.disableDSM;
                     btnToggleDSM.Image = Properties.Resources.disableDSMIcon;
+                    btnToggleDSM.ScreenTip = Properties.Resources.dsmTitle;
+                    btnToggleDSM.SuperTip = Properties.Resources.disableDSM;
 
                     //If there are any Inspectors open, we need to update it...
                     var wrappers = Globals.ThisAddIn.InspectorWrappers;
                     foreach(var inspector in wrappers.Keys)
                     {
-                        //If DSM is fully disabled for this inspector, change the SendDateTime
+                        //If DSM is fully disabled for this inspector, change the SendDateTime and Enable it as single email
                         if (!wrappers[inspector].DelaySingleEmail)
                         {
                             wrappers[inspector].SendDateTime = settings.SendDateTime;
+                            wrappers[inspector].DelaySingleEmail = true;
                             wrappers[inspector].Disable = false;
 
                             //we also need to enable the disable button

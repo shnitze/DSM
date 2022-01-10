@@ -3,6 +3,7 @@ using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -12,8 +13,22 @@ namespace DSM
     {
         private void DSMRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            //We should only have the disable button if DSM is enabled
-            btnDisable.Visible = Properties.Settings.Default.EnableDSM;
+            //We should only have the disable button if DSM is enabled or if Deferred is enabled
+            //var wrapper = Globals.ThisAddIn.InspectorWrappers[Globals.ThisAddIn.Application.ActiveInspector()];
+
+            //btnDisable.Visible = Properties.Settings.Default.EnableDSM || wrapper.SendDateTime != default;
+
+            //Add tool tips for the buttons...
+            btnDSMSettings.ScreenTip = Properties.Resources.dsmTitle;
+            btnDSMSettings.SuperTip = Properties.Resources.dsmSingleEmailTip;
+
+            btnDisable.ScreenTip = Properties.Resources.dsmTitle;
+            btnDisable.SuperTip = Properties.Resources.disableDSM;
+
+            var inspector = this.Context as Inspector;
+            var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+
+            btnDisable.Visible = Properties.Settings.Default.EnableDSM || wrapper.SendDateTime != default;
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)

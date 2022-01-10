@@ -120,6 +120,12 @@
   <data name="disableDSM" xml:space="preserve">
     <value>Désactiver mode délai d'envoi</value>
   </data>
+  <data name="dsmSingleEmailTip" xml:space="preserve">
+    <value>Configurer la date d'envoi.</value>
+  </data>
+  <data name="dsmTitle" xml:space="preserve">
+    <value>Mode délai d'envoi</value>
+  </data>
   <data name="enableDSM" xml:space="preserve">
     <value>Activer mode délai d'envoi</value>
   </data>

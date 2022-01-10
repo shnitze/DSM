@@ -100,6 +100,24 @@ namespace DSM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configure the send date..
+        /// </summary>
+        internal static string dsmSingleEmailTip {
+            get {
+                return ResourceManager.GetString("dsmSingleEmailTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay Send Mode.
+        /// </summary>
+        internal static string dsmTitle {
+            get {
+                return ResourceManager.GetString("dsmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Delay Send Mode.
         /// </summary>
         internal static string enableDSM {
