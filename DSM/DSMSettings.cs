@@ -23,12 +23,17 @@ namespace DSM
             _toggle = toggle;
 
             InitializeComponent();
-
+            datePicker.GotFocus += DatePicker_GotFocus;
             //When setting the DSM toggle date, we don't want the Send Later button
             if (!_toggle)
             {
                 lblNote.Visible = false;
             }
+        }
+
+        private void DatePicker_GotFocus(object sender, EventArgs e)
+        {
+            SendKeys.Send("%{DOWN}");
         }
 
         public DateTime SendDateTime => datePicker.Value.Date + timePicker.Value.TimeOfDay;
