@@ -36,7 +36,7 @@ namespace DSM
             taskPane.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
             taskPane.VisibleChanged += TaskPane_VisibleChanged;
 
-            taskPane.Height = 80;
+            taskPane.Height = 120;
 
             //We should only make it visible if DSM is enabled...
             //only check for the toggle since the single email isn't initialized yet...
