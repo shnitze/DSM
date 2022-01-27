@@ -61,6 +61,15 @@ namespace DSM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a valid date and time greater than the current date and time..
+        /// </summary>
+        internal static string dateSelectError {
+            get {
+                return ResourceManager.GetString("dateSelectError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon delaySend {
@@ -123,6 +132,15 @@ namespace DSM.Properties {
         internal static string enableDSM {
             get {
                 return ResourceManager.GetString("enableDSM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
             }
         }
         

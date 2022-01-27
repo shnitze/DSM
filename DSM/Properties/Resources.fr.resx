@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="dateSelectError" xml:space="preserve">
+    <value>Veuillez sélectionner une date et une heure valides supérieures à la date et à l'heure actuelles.</value>
+  </data>
   <data name="disableDSM" xml:space="preserve">
     <value>Désactiver mode délai d'envoi</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="enableDSM" xml:space="preserve">
     <value>Activer mode délai d'envoi</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Erreur</value>
   </data>
   <data name="sendDialog" xml:space="preserve">
     <value>Ce email sera envoyé à {0} et sera déplacé dans le dossier Boîte d'envoi jusqu'à l'envoi.

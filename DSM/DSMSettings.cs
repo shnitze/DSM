@@ -23,7 +23,9 @@ namespace DSM
             _toggle = toggle;
 
             InitializeComponent();
+            datePicker.MouseDown += DatePicker_MouseDown;
             datePicker.GotFocus += DatePicker_GotFocus;
+            datePicker.MinDate = DateTime.Now.Date;
             //When setting the DSM toggle date, we don't want the Send Later button
             if (!_toggle)
             {
@@ -31,9 +33,27 @@ namespace DSM
             }
         }
 
+        private void DatePicker_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Making sure the calendar button wasn't pressed...
+            if (e.X < datePicker.Width - 35)
+            {
+                SendKeys.Send("%{DOWN}");
+            }
+                
+        }
+
+        //When a date is selected, the focus should move to the next Control
+        private void DatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            this.SelectNextControl(ctrl, true, false, false, false);
+        }
+
         private void DatePicker_GotFocus(object sender, EventArgs e)
         {
-            SendKeys.Send("%{DOWN}");
+            if (MouseButtons == MouseButtons.None)
+                SendKeys.Send("%{DOWN}");
         }
 
         public DateTime SendDateTime => datePicker.Value.Date + timePicker.Value.TimeOfDay;
@@ -43,8 +63,17 @@ namespace DSM
             //Populate the fields on load
             if (_toggle)
             {
-                datePicker.Value = Properties.Settings.Default.ToggleSendDateTime.Date;
-                timePicker.Value = Properties.Settings.Default.ToggleSendDateTime;
+                if (Properties.Settings.Default.ToggleSendDateTime.Date > DateTime.Now)
+                {
+                    datePicker.Value = Properties.Settings.Default.ToggleSendDateTime.Date;
+                    timePicker.Value = Properties.Settings.Default.ToggleSendDateTime;
+                }
+                else
+                {
+                    datePicker.Value = DateTime.Now.Date;
+                    timePicker.Value = DateTime.Now;
+                }
+                
             }
             else
             {
@@ -55,13 +84,24 @@ namespace DSM
                     datePicker.Value = Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime.Date;
                     timePicker.Value = Globals.ThisAddIn.InspectorWrappers[inspector].SendDateTime;
                 }
+                else if (Properties.Settings.Default.ToggleSendDateTime > DateTime.Now)
+                {
+                    datePicker.Value = Properties.Settings.Default.ToggleSendDateTime.Date;
+                    timePicker.Value = Properties.Settings.Default.ToggleSendDateTime;
+                }
                 else
                 {
                     datePicker.Value = DateTime.Now.Date;
                     timePicker.Value = DateTime.Now;
                 }
             }
-            
+            //datePicker.ValueChanged += DatePicker_ValueChanged;
+            datePicker.CloseUp += DatePicker_CloseUp;
+        }
+
+        private void DatePicker_CloseUp(object sender, EventArgs e)
+        {
+            this.SelectNextControl((Control)sender, true, true, true, true);
         }
 
         /// <summary>
@@ -100,6 +140,17 @@ namespace DSM
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
+            //Before we move along with this... we need to make sure the date
+            //is not in the past... We already have a MinDate for the DateTimePicker 
+            //but not for the time picker
+            DateTime selectedDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
+            if (selectedDateTime < DateTime.Now)
+            {
+                MessageBox.Show(Properties.Resources.dateSelectError, Properties.Resources.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             if (_toggle)
             {
                 Properties.Settings.Default.EnableDSM = true;
