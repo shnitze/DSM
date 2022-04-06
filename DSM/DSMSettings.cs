@@ -30,7 +30,7 @@ namespace DSM
             if (!_toggle)
             {
                 lblNote.Visible = false;
-                this.Height = 220;
+                this.Height = this.Height - lblNote.Height;
             }
         }
 
