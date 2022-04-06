@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 150</value>
+    <value>281, 186</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 28</value>
@@ -152,11 +152,14 @@
   <data name="datePicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 21</value>
   </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>353, 81</value>
+  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Date d'envoi</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 150</value>
+    <value>9, 186</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 28</value>
@@ -164,8 +167,24 @@
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>369, 187</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkWarningMessage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkWarningMessage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="chkWarningMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 106</value>
+  </data>
+  <data name="chkWarningMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 19</value>
+  </data>
+  <data name="chkWarningMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="chkWarningMessage.Text" xml:space="preserve">
+    <value>Avertissez moi avant d'envoyer un courriel différré</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

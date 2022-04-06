@@ -36,7 +36,7 @@ namespace DSM
             taskPane.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
             taskPane.VisibleChanged += TaskPane_VisibleChanged;
 
-            taskPane.Height = 120;
+            taskPane.Height = 80;
 
             //We should only make it visible if DSM is enabled...
             //only check for the toggle since the single email isn't initialized yet...
@@ -178,15 +178,19 @@ namespace DSM
                             //1/1/4501 12:00PM is the default DateTIme in Outlook...
                             if (mailItem.DeferredDeliveryTime != new DateTime(4501,1,1))
                             {
-                                wrapper.DelaySingleEmail = true;
-                                wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
-                                
-                                foreach (var ribbon in Globals.Ribbons)
+                                //The email is being defferred... check if DSM is responsible
+                                if (mailItem.UserProperties.Find("DSM", true) != null && mailItem.UserProperties["DSM"].Value == true)
                                 {
-                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                    wrapper.DelaySingleEmail = true;
+                                    wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
+
+                                    foreach (var ribbon in Globals.Ribbons)
                                     {
-                                        dsmRibbon.btnDisable.Visible = true;
-                                        break;
+                                        if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                        {
+                                            dsmRibbon.btnDisable.Visible = true;
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -196,6 +200,8 @@ namespace DSM
                                 {
                                     if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
                                     {
+                                        mailItem.UserProperties.Add("DSM", OlUserPropertyType.olYesNo, false, 1);
+                                        mailItem.UserProperties["DSM"].Value = true;
                                         dsmRibbon.btnDisable.Visible = Properties.Settings.Default.EnableDSM;
                                         break;
                                     }
@@ -234,8 +240,6 @@ namespace DSM
                 //Because the single email delay can be set after the toggle is turned on, it should
                 //override the toggle send date time
 
-                
-
                 if (Properties.Settings.Default.EnableDSM)
                 {
                     sendDateTime = Properties.Settings.Default.ToggleSendDateTime;
@@ -256,7 +260,7 @@ namespace DSM
                     }
                 }
 
-                if (sendDateTime != DateTime.MinValue)
+                if (sendDateTime != DateTime.MinValue && Properties.Settings.Default.WarningMessage)
                 {
                     if (MessageBox.Show(string.Format(Properties.Resources.sendDialog, sendDateTime.ToString("dd/MM/yyyy hh:mm tt")), Properties.Resources.warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {

@@ -64,12 +64,12 @@ namespace DSM
                 var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
                 //we're really only concerned with the height...
                 if (wrapper.CustomTaskPane.DockPosition == Office.MsoCTPDockPosition.msoCTPDockPositionTop
-                    && wrapper.CustomTaskPane.Height != 120)
+                    && wrapper.CustomTaskPane.Height != 80)
                 {
                     //if the user is dragging the taskPane, cancel it...
                     SendKeys.Send("{ESC}");
                     //Set it's height back to original
-                    wrapper.CustomTaskPane.Height = 120;
+                    wrapper.CustomTaskPane.Height = 80;
                 }
             }
             catch (Exception)

@@ -37,6 +37,7 @@ namespace DSM
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.chkWarningMessage = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,11 +89,20 @@ namespace DSM
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // chkWarningMessage
+            // 
+            this.chkWarningMessage.Checked = true;
+            this.chkWarningMessage.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.chkWarningMessage, "chkWarningMessage");
+            this.chkWarningMessage.Name = "chkWarningMessage";
+            this.chkWarningMessage.UseVisualStyleBackColor = true;
+            // 
             // DSMSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.chkWarningMessage);
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupBox2);
@@ -117,5 +127,6 @@ namespace DSM
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chkWarningMessage;
     }
 }

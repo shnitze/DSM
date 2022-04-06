@@ -30,6 +30,7 @@ namespace DSM
             if (!_toggle)
             {
                 lblNote.Visible = false;
+                this.Height = 220;
             }
         }
 
@@ -95,6 +96,7 @@ namespace DSM
                     timePicker.Value = DateTime.Now;
                 }
             }
+            chkWarningMessage.Checked = Properties.Settings.Default.WarningMessage;
             //datePicker.ValueChanged += DatePicker_ValueChanged;
             datePicker.CloseUp += DatePicker_CloseUp;
         }
@@ -163,7 +165,12 @@ namespace DSM
                 //Get current MailItem
                 var inspector = Globals.ThisAddIn.Application.ActiveInspector();
                 var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
-
+                var mailItem = inspector.CurrentItem as MailItem;
+                if (mailItem.UserProperties.Find("DSM", true) == null)
+                {
+                    mailItem.UserProperties.Add("DSM", OlUserPropertyType.olYesNo, false, false);
+                    mailItem.UserProperties["DSM"].Value = true;
+                }
                 wrapper.DelaySingleEmail = true;
                 wrapper.SendDateTime = datePicker.Value.Date + timePicker.Value.TimeOfDay;
                 //We also need to reset the disable flag in the InspectorWrapper
@@ -183,6 +190,9 @@ namespace DSM
                     }
                 }
             }
+
+            Properties.Settings.Default.WarningMessage = chkWarningMessage.Checked;
+            Properties.Settings.Default.Save();
 
             this.Close();
         }

@@ -45,5 +45,17 @@ namespace DSM.Properties {
                 this["ToggleSendDateTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WarningMessage {
+            get {
+                return ((bool)(this["WarningMessage"]));
+            }
+            set {
+                this["WarningMessage"] = value;
+            }
+        }
     }
 }

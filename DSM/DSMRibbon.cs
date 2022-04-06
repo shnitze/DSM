@@ -26,9 +26,17 @@ namespace DSM
             btnDisable.SuperTip = Properties.Resources.disableDSM;
 
             var inspector = this.Context as Inspector;
-            var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+            
+            if (Globals.ThisAddIn.InspectorWrappers.TryGetValue(inspector, out InspectorWrapper value))
+            {
+                btnDisable.Visible = Properties.Settings.Default.EnableDSM || value.SendDateTime != default;
+            }
+            else
+            {
+                btnDisable.Visible = Properties.Settings.Default.EnableDSM;
+            }
 
-            btnDisable.Visible = Properties.Settings.Default.EnableDSM || wrapper.SendDateTime != default;
+            
         }
 
         private void btnDSMSettings_Click(object sender, RibbonControlEventArgs e)
@@ -56,6 +64,14 @@ namespace DSM
             
             wrapper.Disable = true;
             wrapper.DelaySingleEmail = false;
+
+            if (inspector.CurrentItem is MailItem mailItem)
+            {
+                if (mailItem.UserProperties.Find("DSM", true) != null)
+                {
+                    mailItem.UserProperties["DSM"].Value = false;
+                }
+            }
 
             btnDisable.Visible = false;
             
