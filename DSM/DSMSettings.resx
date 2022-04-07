@@ -126,13 +126,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 188</value>
+    <value>373, 231</value>
   </data>
   <data name="btnOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>108, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
@@ -160,16 +160,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblNote.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 141</value>
-  </data>
-  <data name="lblNote.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>8, 174</value>
   </data>
   <data name="lblNote.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>300, 0</value>
+    <value>400, 0</value>
   </data>
   <data name="lblNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 30</value>
+    <value>397, 36</value>
   </data>
   <data name="lblNote.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -196,13 +193,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblSendAt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 42</value>
-  </data>
-  <data name="lblSendAt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>15, 52</value>
   </data>
   <data name="lblSendAt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 15</value>
+    <value>97, 18</value>
   </data>
   <data name="lblSendAt.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -226,13 +220,13 @@
     <value>hh:mm tt</value>
   </data>
   <data name="timePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 40</value>
+    <value>279, 49</value>
   </data>
   <data name="timePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="timePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 21</value>
+    <value>161, 24</value>
   </data>
   <data name="timePicker.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -268,16 +262,16 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 10</value>
+    <value>12, 12</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 81</value>
+    <value>467, 100</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -301,13 +295,13 @@
     <value>dd/MM/yyyy</value>
   </data>
   <data name="datePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 40</value>
+    <value>131, 49</value>
   </data>
   <data name="datePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="datePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 21</value>
+    <value>143, 24</value>
   </data>
   <data name="datePicker.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -331,13 +325,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 188</value>
+    <value>12, 231</value>
   </data>
   <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>108, 28</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -361,10 +355,13 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="chkWarningMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 106</value>
+    <value>12, 130</value>
+  </data>
+  <data name="chkWarningMessage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="chkWarningMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 24</value>
+    <value>408, 30</value>
   </data>
   <data name="chkWarningMessage.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -388,10 +385,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>372, 223</value>
+    <value>496, 274</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -690,7 +687,10 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value> DSM Configuration</value>
