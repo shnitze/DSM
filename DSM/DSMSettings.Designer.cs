@@ -91,9 +91,9 @@ namespace DSM
             // 
             // chkWarningMessage
             // 
+            resources.ApplyResources(this.chkWarningMessage, "chkWarningMessage");
             this.chkWarningMessage.Checked = true;
             this.chkWarningMessage.CheckState = System.Windows.Forms.CheckState.Checked;
-            resources.ApplyResources(this.chkWarningMessage, "chkWarningMessage");
             this.chkWarningMessage.Name = "chkWarningMessage";
             this.chkWarningMessage.UseVisualStyleBackColor = true;
             // 
