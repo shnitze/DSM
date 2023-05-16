@@ -271,6 +271,10 @@ namespace DSM
                         Cancel = true;
                     }
                 }
+                else if (sendDateTime != DateTime.MinValue && !Properties.Settings.Default.WarningMessage)
+                {
+                    mailItem.DeferredDeliveryTime = sendDateTime;
+                }
             }
         }
 

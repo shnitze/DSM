@@ -36,12 +36,13 @@ namespace DSM
             // lblWarningMessage
             // 
             resources.ApplyResources(this.lblWarningMessage, "lblWarningMessage");
+            this.lblWarningMessage.ForeColor = System.Drawing.Color.Black;
             this.lblWarningMessage.Name = "lblWarningMessage";
             // 
             // WarningUserControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.lblWarningMessage);
             this.Name = "WarningUserControl";
