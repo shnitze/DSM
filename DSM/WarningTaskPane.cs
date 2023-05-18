@@ -58,23 +58,23 @@ namespace DSM
         {
             //This can cause an exception when the component is initialized
             //For now, absorb the exception
-            try
-            {
-                var inspector = Globals.ThisAddIn.Application.ActiveInspector();
-                var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
-                //we're really only concerned with the height...
-                if (wrapper.CustomTaskPane.DockPosition == Office.MsoCTPDockPosition.msoCTPDockPositionTop
-                    && wrapper.CustomTaskPane.Height != 120)
-                {
-                    //if the user is dragging the taskPane, cancel it...
-                    SendKeys.Send("{ESC}");
-                    //Set it's height back to original
-                    wrapper.CustomTaskPane.Height = 120;
-                }
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    var inspector = Globals.ThisAddIn.Application.ActiveInspector();
+            //    var wrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
+            //    //we're really only concerned with the height...
+            //    if (wrapper.CustomTaskPane.DockPosition == Office.MsoCTPDockPosition.msoCTPDockPositionTop
+            //        && wrapper.CustomTaskPane.Height != 120)
+            //    {
+            //        //if the user is dragging the taskPane, cancel it...
+            //        SendKeys.Send("{ESC}");
+            //        //Set it's height back to original
+            //        wrapper.CustomTaskPane.Height = 120;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //}
         }
 
         private void btnDismiss_Click(object sender, EventArgs e)
