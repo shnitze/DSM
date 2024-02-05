@@ -12,6 +12,7 @@ using System.Threading;
 using System.Globalization;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Outlook;
+using System.Runtime.InteropServices;
 
 namespace DSM
 {
@@ -64,6 +65,8 @@ namespace DSM
             taskPane = null;
             Globals.ThisAddIn.InspectorWrappers.Remove(inspector);
             ((Outlook.InspectorEvents_Event)this.inspector).Close -= new Outlook.InspectorEvents_CloseEventHandler(InspectorWrapper_Close);
+
+            Marshal.FinalReleaseComObject(inspector);
         }
 
         public Microsoft.Office.Tools.CustomTaskPane CustomTaskPane => taskPane;
@@ -129,33 +132,56 @@ namespace DSM
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
-            inspectors = this.Application.Inspectors;
-            Application.ItemSend += Application_ItemSend;
-            inspectors.NewInspector += Inspectors_NewInspector;
+            LanguageSettings languageSettings = null;
 
-            foreach (Outlook.Inspector inspector in inspectors)
+            try
             {
-                Inspectors_NewInspector(inspector);
+                languageSettings = Application.LanguageSettings;
+                
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(languageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI]);
+                inspectors = Application.Inspectors;
+                Application.ItemSend += Application_ItemSend;
+                inspectors.NewInspector += Inspectors_NewInspector;
+
+                foreach (Outlook.Inspector inspector in inspectors)
+                {
+                    Inspectors_NewInspector(inspector);
+                }
+
+                //To avoid errors, we should make sure the SendDateTime in the Settings has a value
+                //if not set it to today...
+                if (Properties.Settings.Default.ToggleSendDateTime == null || Properties.Settings.Default.ToggleSendDateTime.Equals(default))
+                {
+                    Properties.Settings.Default.ToggleSendDateTime = DateTime.Now;
+                    Properties.Settings.Default.Save();
+                }
             }
-
-            //To avoid errors, we should make sure the SendDateTime in the Settings has a value
-            //if not set it to today...
-            if (Properties.Settings.Default.ToggleSendDateTime == null || Properties.Settings.Default.ToggleSendDateTime.Equals(default))
+            finally
             {
-                Properties.Settings.Default.ToggleSendDateTime = DateTime.Now;
-                Properties.Settings.Default.Save();
+                if (languageSettings != null) Marshal.ReleaseComObject(languageSettings);
             }
         }
 
         protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
-            Outlook.Application app = this.GetHostItem<Outlook.Application>(typeof(Outlook.Application), "Application");
-            int lcid = app.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
+            Outlook.Application app = null; 
+            LanguageSettings languageSettings = null;
+            try
+            {
+                app = this.GetHostItem<Outlook.Application>(typeof(Outlook.Application), "Application");
+                languageSettings = app.LanguageSettings;
+                int lcid = languageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
 
-            return base.CreateRibbonExtensibilityObject();
+                return base.CreateRibbonExtensibilityObject();
+            }
+            finally
+            {
+                if (languageSettings != null) Marshal.ReleaseComObject(languageSettings);
+                if (app != null) Marshal.ReleaseComObject(app);
+            }
+            
         }
 
         /// <summary>
@@ -165,64 +191,76 @@ namespace DSM
         /// <param name="Inspector"></param>
         private void Inspectors_NewInspector(Outlook.Inspector Inspector)
         {
-            if (Inspector.CurrentItem is Outlook.MailItem mailItem)
+            MailItem mailItem = null;
+            Folder folder = null;
+            UserProperties userProperties = null;
+            try
             {
+                mailItem = Inspector.CurrentItem as MailItem;
                 if (mailItem != null && !mailItem.Sent)
                 {
                     var wrapper = new InspectorWrapper(Inspector);
 
-                    if (mailItem.Parent is MAPIFolder folder)
-                    {
-                        if (folder != null)
-                        {
-                            //1/1/4501 12:00PM is the default DateTIme in Outlook...
-                            if (mailItem.DeferredDeliveryTime != new DateTime(4501,1,1))
-                            {
-                                //The email is being defferred... check if DSM is responsible
-                                if (mailItem.UserProperties.Find("DSM", true) != null && mailItem.UserProperties["DSM"].Value == true)
-                                {
-                                    wrapper.DelaySingleEmail = true;
-                                    wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
+                    folder = mailItem.Parent as Folder;
 
-                                    foreach (var ribbon in Globals.Ribbons)
-                                    {
-                                        if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
-                                        {
-                                            dsmRibbon.btnDisable.Visible = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            else if (Properties.Settings.Default.EnableDSM)
+                    if (folder != null)
+                    {
+
+                        userProperties = mailItem.UserProperties;
+                        //1/1/4501 12:00PM is the default DateTIme in Outlook...
+                        if (mailItem.DeferredDeliveryTime != new DateTime(4501, 1, 1))
+                        {
+                            //The email is being defferred... check if DSM is responsible
+                            if (userProperties.Find("DSM", true) != null && userProperties["DSM"].Value == true)
                             {
+                                wrapper.DelaySingleEmail = true;
+                                wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
+
                                 foreach (var ribbon in Globals.Ribbons)
                                 {
                                     if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
                                     {
-                                        mailItem.UserProperties.Add("DSM", OlUserPropertyType.olYesNo, false, 1);
-                                        mailItem.UserProperties["DSM"].Value = true;
-                                        dsmRibbon.btnDisable.Visible = Properties.Settings.Default.EnableDSM;
+                                        dsmRibbon.btnDisable.Visible = true;
                                         break;
                                     }
                                 }
                             }
-                            else
-                            {
-                                foreach (var ribbon in Globals.Ribbons)
-                                {
-                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
-                                    {
-                                        dsmRibbon.btnDisable.Visible = false;
-                                        break;
-                                    }
-                                }
-                            }
-                            
                         }
+                        else if (Properties.Settings.Default.EnableDSM)
+                        {
+                            foreach (var ribbon in Globals.Ribbons)
+                            {
+                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                {
+                                    userProperties.Add("DSM", OlUserPropertyType.olYesNo, false, 1);
+                                    userProperties["DSM"].Value = true;
+                                    dsmRibbon.btnDisable.Visible = Properties.Settings.Default.EnableDSM;
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (var ribbon in Globals.Ribbons)
+                            {
+                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                {
+                                    dsmRibbon.btnDisable.Visible = false;
+                                    break;
+                                }
+                            }
+                        }
+
                     }
+
                     inspectorWrappersValue.Add(Inspector, wrapper);
                 }
+            }
+            finally
+            {
+                if (userProperties != null) Marshal.ReleaseComObject(userProperties);
+                if (folder != null) Marshal.ReleaseComObject(folder);
+                if (mailItem != null) Marshal.ReleaseComObject(mailItem);
             }
         }
 
