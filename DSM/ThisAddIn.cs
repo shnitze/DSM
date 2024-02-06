@@ -18,7 +18,7 @@ namespace DSM
 {
     public class InspectorWrapper
     {
-        private Outlook.Inspector inspector;
+        private readonly Outlook.Inspector inspector;
         private Microsoft.Office.Tools.CustomTaskPane taskPane;
         private DSMSettings settingsDialog;
         private bool delaySingleEmail;
@@ -126,9 +126,6 @@ namespace DSM
         private Dictionary<Outlook.Inspector, InspectorWrapper> inspectorWrappersValue = new Dictionary<Outlook.Inspector, InspectorWrapper>();
 
         private Outlook.Inspectors inspectors;
-        //internal bool delaySingleEmail;
-        //internal CustomTaskPane warningTaskPane;
-        //internal WarningTaskPane warningUserControl;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -151,7 +148,7 @@ namespace DSM
 
                 //To avoid errors, we should make sure the SendDateTime in the Settings has a value
                 //if not set it to today...
-                if (Properties.Settings.Default.ToggleSendDateTime == null || Properties.Settings.Default.ToggleSendDateTime.Equals(default))
+                if (Properties.Settings.Default.ToggleSendDateTime.Equals(default))
                 {
                     Properties.Settings.Default.ToggleSendDateTime = DateTime.Now;
                     Properties.Settings.Default.Save();
@@ -188,18 +185,18 @@ namespace DSM
         /// When a user Creates a new email, check if DSM is enabled.
         /// If it is, show the warning
         /// </summary>
-        /// <param name="Inspector"></param>
-        private void Inspectors_NewInspector(Outlook.Inspector Inspector)
+        /// <param name="inspector"></param>
+        private void Inspectors_NewInspector(Outlook.Inspector inspector)
         {
             MailItem mailItem = null;
             Folder folder = null;
             UserProperties userProperties = null;
             try
             {
-                mailItem = Inspector.CurrentItem as MailItem;
+                mailItem = inspector.CurrentItem as MailItem;
                 if (mailItem != null && !mailItem.Sent)
                 {
-                    var wrapper = new InspectorWrapper(Inspector);
+                    var wrapper = new InspectorWrapper(inspector);
 
                     folder = mailItem.Parent as Folder;
 
@@ -211,14 +208,14 @@ namespace DSM
                         if (mailItem.DeferredDeliveryTime != new DateTime(4501, 1, 1))
                         {
                             //The email is being defferred... check if DSM is responsible
-                            if (userProperties.Find("DSM", true) != null && userProperties["DSM"].Value == true)
+                            if (userProperties.Find("DSM", true) != null && userProperties["DSM"].Value)
                             {
                                 wrapper.DelaySingleEmail = true;
                                 wrapper.SendDateTime = mailItem.DeferredDeliveryTime;
 
                                 foreach (var ribbon in Globals.Ribbons)
                                 {
-                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                    if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == inspector)
                                     {
                                         dsmRibbon.btnDisable.Visible = true;
                                         break;
@@ -230,7 +227,7 @@ namespace DSM
                         {
                             foreach (var ribbon in Globals.Ribbons)
                             {
-                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == inspector)
                                 {
                                     userProperties.Add("DSM", OlUserPropertyType.olYesNo, false, 1);
                                     userProperties["DSM"].Value = true;
@@ -243,7 +240,7 @@ namespace DSM
                         {
                             foreach (var ribbon in Globals.Ribbons)
                             {
-                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == Inspector)
+                                if (ribbon is DSMRibbon dsmRibbon && dsmRibbon.Context == inspector)
                                 {
                                     dsmRibbon.btnDisable.Visible = false;
                                     break;
@@ -253,7 +250,7 @@ namespace DSM
 
                     }
 
-                    inspectorWrappersValue.Add(Inspector, wrapper);
+                    inspectorWrappersValue.Add(inspector, wrapper);
                 }
             }
             finally

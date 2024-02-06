@@ -97,7 +97,6 @@ namespace DSM
                 }
             }
             chkWarningMessage.Checked = Properties.Settings.Default.WarningMessage;
-            //datePicker.ValueChanged += DatePicker_ValueChanged;
             datePicker.CloseUp += DatePicker_CloseUp;
         }
 
@@ -200,17 +199,6 @@ namespace DSM
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        /// <summary>
-        /// This Focus event triggers when the settings dialog is put in focus.
-        /// This checks that there are recipients before enabling the Send Later button.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DSMSettings_Activated(object sender, EventArgs e)
-        {
-
         }
     }
 }

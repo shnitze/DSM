@@ -65,12 +65,10 @@ namespace DSM
             wrapper.Disable = true;
             wrapper.DelaySingleEmail = false;
 
-            if (inspector.CurrentItem is MailItem mailItem)
+            if (inspector.CurrentItem is MailItem mailItem
+                && mailItem.UserProperties.Find("DSM", true) != null)
             {
-                if (mailItem.UserProperties.Find("DSM", true) != null)
-                {
-                    mailItem.UserProperties["DSM"].Value = false;
-                }
+                mailItem.UserProperties["DSM"].Value = false;
             }
 
             btnDisable.Visible = false;
