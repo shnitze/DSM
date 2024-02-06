@@ -64,7 +64,6 @@ namespace DSM
             this.grpProperties.Items.Add(this.btnDSMSettings);
             resources.ApplyResources(this.grpProperties, "grpProperties");
             this.grpProperties.Name = "grpProperties";
-            this.grpProperties.Position = this.Factory.RibbonPosition.BeforeOfficeId("DSMGroup");
             // 
             // btnDisable
             // 
