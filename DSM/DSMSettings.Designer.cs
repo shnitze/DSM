@@ -110,7 +110,6 @@ namespace DSM
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "DSMSettings";
-            this.Activated += new System.EventHandler(this.DSMSettings_Activated);
             this.Load += new System.EventHandler(this.DSMSettings_OnLoad);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
